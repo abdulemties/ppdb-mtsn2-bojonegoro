@@ -27,14 +27,14 @@
                             200: '#A7F3D0',
                             500: '#10B981',
                             600: '#059669',
-                            700: '#047857', // Primary
+                            700: '#047857',
                             800: '#065F46',
-                            900: '#064E3B', // Deep Forest
+                            900: '#064E3B',
                             950: '#022C22',
                         },
                         amber: {
                             500: '#F59E0B',
-                            600: '#D97706', // CTA Accent
+                            600: '#D97706',
                             700: '#B45309',
                         }
                     }
@@ -106,7 +106,7 @@
 </head>
 <body class="pb-20 md:pb-0 antialiased selection:bg-emerald-700 selection:text-white">
 
-    <!-- Toast Notification Container (Pengganti alert()) -->
+    <!-- Toast Notification Container -->
     <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0 no-print"></div>
 
     <!-- ===================================================================== -->
@@ -117,8 +117,9 @@
             <div class="flex justify-between items-center h-16 sm:h-20">
                 <!-- Logo & Judul Madrasah -->
                 <button onclick="switchView('beranda')" class="flex items-center gap-3 text-left focus:outline-none group">
-                   <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white p-1 border border-slate-200 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform shrink-0">
-                        <img src="logo-mtsn2.png" alt="Logo MTsN 2 Bojonegoro" class="w-full h-full object-contain">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white p-1 border border-slate-200 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform shrink-0">
+                        <img src="logo-mtsn2.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Logo MTsN 2 Bojonegoro" class="w-full h-full object-contain">
+                        <div style="display:none;" class="w-full h-full rounded-lg bg-emerald-800 text-amber-400 items-center justify-center font-heading font-extrabold text-sm">M2</div>
                     </div>
                     <div>
                         <div class="flex items-center gap-1.5">
@@ -144,7 +145,7 @@
                     </button>
                 </nav>
 
-                <!-- Tombol CTA Amber -->
+                <!-- Tombol CTA Amber & Login Admin -->
                 <div class="flex items-center gap-2">
                     <button onclick="switchView('daftar')" class="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 active:scale-[0.98] text-white font-semibold text-xs sm:text-sm px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-xl shadow-md shadow-amber-600/25 transition-all">
                         <i data-lucide="file-edit" class="w-4 h-4"></i>
@@ -434,7 +435,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-                    <!-- Step 1 -->
                     <div class="bg-emerald-900/80 backdrop-blur-sm border border-emerald-700/70 rounded-2xl p-5 relative">
                         <div class="flex items-center justify-between mb-4">
                             <span class="w-9 h-9 rounded-xl bg-amber-500 text-emerald-950 font-heading font-extrabold flex items-center justify-center">1</span>
@@ -443,7 +443,6 @@
                         <h3 class="font-heading font-bold text-base mb-1.5">Buat Akun / Isi Formulir</h3>
                         <p class="text-xs text-emerald-100/80 leading-relaxed">Lengkapi biodata calon siswa, data orang tua, dan sekolah asal secara online.</p>
                     </div>
-                    <!-- Step 2 -->
                     <div class="bg-emerald-900/80 backdrop-blur-sm border border-emerald-700/70 rounded-2xl p-5 relative">
                         <div class="flex items-center justify-between mb-4">
                             <span class="w-9 h-9 rounded-xl bg-amber-500 text-emerald-950 font-heading font-extrabold flex items-center justify-center">2</span>
@@ -452,7 +451,6 @@
                         <h3 class="font-heading font-bold text-base mb-1.5">Unggah Berkas</h3>
                         <p class="text-xs text-emerald-100/80 leading-relaxed">Upload Pas Foto 3x4, Kartu Keluarga, Akta Kelahiran, serta surat undangan/piagam prestasi.</p>
                     </div>
-                    <!-- Step 3 -->
                     <div class="bg-emerald-900/80 backdrop-blur-sm border border-emerald-700/70 rounded-2xl p-5 relative">
                         <div class="flex items-center justify-between mb-4">
                             <span class="w-9 h-9 rounded-xl bg-amber-500 text-emerald-950 font-heading font-extrabold flex items-center justify-center">3</span>
@@ -461,7 +459,6 @@
                         <h3 class="font-heading font-bold text-base mb-1.5">Verifikasi Panitia</h3>
                         <p class="text-xs text-emerald-100/80 leading-relaxed">Panitia memeriksa keabsahan berkas dalam 1x24 jam kerja. Pantau progres di menu Cek Status.</p>
                     </div>
-                    <!-- Step 4 -->
                     <div class="bg-emerald-900/80 backdrop-blur-sm border border-emerald-700/70 rounded-2xl p-5 relative">
                         <div class="flex items-center justify-between mb-4">
                             <span class="w-9 h-9 rounded-xl bg-amber-500 text-emerald-950 font-heading font-extrabold flex items-center justify-center">4</span>
@@ -470,7 +467,6 @@
                         <h3 class="font-heading font-bold text-base mb-1.5">Tes Performa Minat dan Bakat</h3>
                         <p class="text-xs text-emerald-100/80 leading-relaxed">Hadir di madrasah membawa Kartu Bukti Pendaftaran untuk mengikuti Tes Performa Minat dan Bakat.</p>
                     </div>
-                    <!-- Step 5 -->
                     <div class="bg-emerald-900/80 backdrop-blur-sm border border-emerald-700/70 rounded-2xl p-5 relative sm:col-span-2 lg:col-span-1">
                         <div class="flex items-center justify-between mb-4">
                             <span class="w-9 h-9 rounded-xl bg-emerald-400 text-emerald-950 font-heading font-extrabold flex items-center justify-center">5</span>
@@ -783,7 +779,7 @@
                     </div>
                 </div>
 
-                <!-- STEP 3: DATA SEKOLAH ASAL (TANPA INPUT NILAI RAPOR) -->
+                <!-- STEP 3: DATA SEKOLAH ASAL -->
                 <div id="form-step-3" class="form-step hidden space-y-5">
                     <div class="border-b border-slate-100 pb-4 mb-5">
                         <h2 class="font-heading text-lg sm:text-xl font-bold text-slate-900">Step 3: Data Sekolah Asal</h2>
@@ -952,13 +948,11 @@
                 <!-- KOP SURAT RESMI KEMENTERIAN AGAMA RI -->
                 <div class="bg-white text-slate-900 px-6 pt-6 pb-4">
                     <div class="flex items-center justify-between gap-4">
-                        <!-- Logo Kementerian Agama / Madrasah (Ganti file logo-kemenag.png & logo-mtsn2.png jika sudah diunggah) -->
+                        <!-- Logo Kementerian Agama -->
                         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center shrink-0">
                             <img src="logo-kemenag.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Logo Kemenag" class="w-full h-full object-contain">
-                            <div style="display:none;" class="w-16 h-16 rounded-2xl bg-emerald-800 text-amber-400 items-center justify-center shadow-sm">
-                                <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                            <div style="display:none;" class="w-16 h-16 rounded-2xl bg-emerald-800 text-amber-400 items-center justify-center shadow-sm font-bold text-xs">
+                                KEMENAG
                             </div>
                         </div>
 
@@ -981,7 +975,7 @@
                             </p>
                         </div>
 
-                        <!-- Logo Madrasah Kanan (Opsional: tampil jika logo-mtsn2.png tersedia) -->
+                        <!-- Logo Madrasah Kanan -->
                         <div class="hidden sm:flex w-16 h-16 sm:w-20 sm:h-20 rounded-xl items-center justify-center shrink-0">
                             <img src="logo-mtsn2.png" onerror="this.parentElement.style.display='none';" alt="Logo MTsN 2 Bojonegoro" class="w-full h-full object-contain">
                         </div>
@@ -1098,11 +1092,10 @@
                             <p id="bukti-tanggal-ttd" class="text-slate-700">Bojonegoro, ......................... 2027</p>
                             <p class="font-medium">Ketua Panitia PPDB,</p>
                             <div class="h-16 sm:h-20 flex items-center justify-center sm:justify-start">
-                                <!-- Jika Anda memiliki file gambar tanda tangan & stempel transparan (ttd-ketua.png), otomatis tampil di sini -->
                                 <img src="ttd-ketua.png" onerror="this.style.display='none';" alt="Tanda Tangan Ketua Panitia" class="h-16 object-contain">
                             </div>
-                            <p id="nama-ketua-panitia" class="font-bold underline underline-offset-4 text-slate-900">....................................................</p>
-                            <p id="nip-ketua-panitia" class="text-xs text-slate-600 mt-0.5">NIP. ........................................</p>
+                            <p id="nama-ketua-panitia" class="font-bold underline underline-offset-4 text-slate-900">Panitia PPDB MTsN 2 Bojonegoro</p>
+                            <p id="nip-ketua-panitia" class="text-xs text-slate-600 mt-0.5">Sekretariat PPDB TP 2027/2028</p>
                         </div>
                     </div>
 
@@ -1121,7 +1114,7 @@
             <div class="text-center mb-8">
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">Layanan Mandiri</span>
                 <h1 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3 mb-2">Cek Status Pendaftaran Real-Time</h1>
-                <p class="text-sm text-slate-600">Masukkan 10 digit NISN atau Nomor Registrasi (misal: PPDB27-UND-0001) untuk memantau status berkas Anda.</p>
+                <p class="text-sm text-slate-600">Masukkan 10 digit NISN atau Nomor Registrasi (misal: PPDB27-UND-0001) untuk memantau status verifikasi berkas Anda.</p>
             </div>
 
             <!-- Kotak Pencarian -->
@@ -1136,6 +1129,7 @@
                     </button>
                 </form>
 
+                <!-- Wadah Tombol Cepat untuk Pendaftar Baru dari Perangkat Ini -->
                 <div class="mt-3 flex flex-wrap gap-2" id="demo-chips-container"></div>
             </div>
 
@@ -1153,8 +1147,9 @@
             <div class="grid md:grid-cols-12 gap-8 pb-10 border-b border-slate-800">
                 <div class="md:col-span-5">
                     <div class="flex items-center gap-3 mb-4">
-                       <div class="w-11 h-11 rounded-xl bg-white p-1 flex items-center justify-center shrink-0">
-                            <img src="logo-mtsn2.png" alt="Logo MTsN 2 Bojonegoro" class="w-full h-full object-contain">
+                        <div class="w-11 h-11 rounded-xl bg-white p-1 flex items-center justify-center shrink-0">
+                            <img src="logo-mtsn2.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Logo MTsN 2 Bojonegoro" class="w-full h-full object-contain">
+                            <div style="display:none;" class="w-full h-full rounded-lg bg-emerald-700 text-white items-center justify-center font-heading font-bold">M2</div>
                         </div>
                         <div>
                             <h3 class="font-heading font-bold text-white text-base">MTsN 2 BOJONEGORO</h3>
@@ -1221,62 +1216,64 @@
         </div>
     </nav>
 
-    <!-- === PANEL DASHBOARD ADMIN PPDB === -->
-<div id="adminDashboardModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; overflow-y:auto; padding:20px;">
-  <div style="max-width:1100px; margin:20px auto; background:#fff; border-radius:12px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,0.3); font-family:sans-serif;">
-    
-    <!-- Header Dashboard -->
-    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; border-bottom:2px solid #e5e7eb; padding-bottom:16px; margin-bottom:20px; gap:10px;">
-      <div>
-        <h2 style="margin:0; color:#065f46; font-size:22px;">Dashboard Panitia PPDB MTsN 2 Bojonegoro</h2>
-        <p style="margin:4px 0 0; color:#4b5563; font-size:14px;">Total Pendaftar Masuk: <strong id="adminTotalPendaftar" style="color:#065f46; font-size:16px;">0</strong> Siswa</p>
-      </div>
-      <div style="display:flex; gap:8px;">
-        <button type="button" onclick="loadAdminDataFromSheet()" style="padding:9px 16px; background:#059669; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;">
-          🔄 Muat Ulang Data
-        </button>
-        <button type="button" onclick="tutupAdminDashboard()" style="padding:9px 16px; background:#dc2626; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;">
-          ✖ Tutup
-        </button>
-      </div>
-    </div>
+    <!-- ===================================================================== -->
+    <!-- PANEL DASHBOARD ADMIN PPDB + VERIFIKASI BERKAS                        -->
+    <!-- ===================================================================== -->
+    <div id="adminDashboardModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; overflow-y:auto; padding:20px;">
+        <div style="max-width:1180px; margin:20px auto; background:#fff; border-radius:12px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,0.3); font-family:sans-serif;">
+            
+            <!-- Header Dashboard -->
+            <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; border-bottom:2px solid #e5e7eb; padding-bottom:16px; margin-bottom:20px; gap:10px;">
+                <div>
+                    <h2 style="margin:0; color:#065f46; font-size:22px; font-weight:800;">Dashboard Panitia PPDB MTsN 2 Bojonegoro</h2>
+                    <p style="margin:4px 0 0; color:#4b5563; font-size:14px;">Total Pendaftar Masuk: <strong id="adminTotalPendaftar" style="color:#065f46; font-size:16px;">0</strong> Siswa</p>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button type="button" onclick="loadAdminDataFromSheet()" style="padding:9px 16px; background:#059669; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;">
+                        🔄 Muat Ulang Data
+                    </button>
+                    <button type="button" onclick="tutupAdminDashboard()" style="padding:9px 16px; background:#dc2626; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;">
+                        ✖ Tutup
+                    </button>
+                </div>
+            </div>
 
-    <!-- Tabel Pendaftar -->
-    <div style="overflow-x:auto;">
-      <table style="width:100%; border-collapse:collapse; font-size:14px; text-align:left;">
-        <thead>
-          <tr style="background:#065f46; color:#fff;">
-            <th style="padding:12px 10px; border:1px solid #047857;">No</th>
-            <th style="padding:12px 10px; border:1px solid #047857;">No. Reg & Tanggal</th>
-            <th style="padding:12px 10px; border:1px solid #047857;">Jalur</th>
-            <th style="padding:12px 10px; border:1px solid #047857;">Nama Siswa & NISN</th>
-            <th style="padding:12px 10px; border:1px solid #047857;">Asal Sekolah & WA</th>
-            <th style="padding:12px 10px; border:1px solid #047857;">Berkas Google Drive</th>
-          </tr>
-        </thead>
-        <tbody id="adminTableBody">
-          <tr>
-            <td colspan="6" style="text-align:center; padding:24px; color:#6b7280;">Klik Muat Ulang Data untuk menampilkan pendaftar.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <!-- Tabel Pendaftar -->
+            <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; font-size:14px; text-align:left;">
+                    <thead>
+                        <tr style="background:#065f46; color:#fff;">
+                            <th style="padding:12px 10px; border:1px solid #047857;">No</th>
+                            <th style="padding:12px 10px; border:1px solid #047857;">No. Reg & Tanggal</th>
+                            <th style="padding:12px 10px; border:1px solid #047857;">Jalur</th>
+                            <th style="padding:12px 10px; border:1px solid #047857;">Nama Siswa & NISN</th>
+                            <th style="padding:12px 10px; border:1px solid #047857;">Asal Sekolah & WA</th>
+                            <th style="padding:12px 10px; border:1px solid #047857;">Berkas Google Drive</th>
+                            <th style="padding:12px 10px; border:1px solid #047857;">Status & Verifikasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody">
+                        <tr>
+                            <td colspan="7" style="text-align:center; padding:24px; color:#6b7280;">Klik Muat Ulang Data untuk menampilkan pendaftar.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-  </div>
-</div>
+        </div>
+    </div>
 
     <!-- ===================================================================== -->
-    <!-- JAVASCRIPT MURNI (SPA ROUTING, AUTO-SAVE, KUOTA REAL-TIME, & UPLOAD)  -->
+    <!-- JAVASCRIPT MURNI (SPA ROUTING, AUTO-SAVE, KUOTA REAL-TIME, & ADMIN)   -->
     <!-- ===================================================================== -->
     <script>
         // ===================================================================
         // KONFIGURASI GOOGLE APPS SCRIPT & KUOTA MADRASAH
         // ===================================================================
-        // Tempel URL Web App dari Google Apps Script Anda di sini jika ingin menyimpan ke Google Drive:
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrEt5FpmIUNMIKqJasTaPFPDo6u2gZlI7SAUcg_LWxjMc9C0T6nnqxgyhvP6i9aGRo/exec';
         const TOTAL_KUOTA = 240;
+        const PASSWORD_ADMIN = 'mtsn2bojonegoro';
 
-        // Inisialisasi ikon Lucide
         lucide.createIcons();
 
         // State Aplikasi
@@ -1292,47 +1289,65 @@
         const STORAGE_DRAFT_KEY = 'ppdb_mtsn2_bjn_2027_draft';
         const STORAGE_SUBMITTED_KEY = 'ppdb_mtsn2_bjn_2027_submitted';
 
-        // Database Pendaftar Real-Time (Diisi otomatis dari Google Spreadsheet)
+        // Database Pendaftar Real-Time (Diisi langsung dari Google Spreadsheet)
         const applicantsDatabase = {};
-        '0139876543': {
-                noReg: 'PPDB27-MTsN2-0294',
-                nisn: '0139876543',
-                nama: 'Siti Aisyah Rahmawati',
-                sekolah: 'SDN Padangan 2',
-                jalur: 'Jalur Undangan',
-                status: 'PERLU PERBAIKAN BERKAS',
-                badgeClass: 'bg-amber-100 text-amber-800 border-amber-300',
-                headerBg: 'bg-amber-600',
-                catatan: 'CATATAN PANITIA: Scan Surat Rekomendasi / Undangan Kepala SD/MI yang diunggah belum disertai stempel basah sekolah asal. Silakan unggah ulang surat rekomendasi asli yang berstempel atau bawa langsung ke sekretariat panitia sebelum 20 Mei 2027.',
-                timeline: [
-                    { title: 'Formulir & Berkas Dikirim', time: '14 Mei 2027, 10:05 WIB', done: true },
-                    { title: 'Pemeriksaan Berkas Panitia', time: '14 Mei 2027, 15:20 WIB (Perlu Revisi Surat Undangan)', done: false },
-                    { title: 'Tes Performa Minat dan Bakat', time: 'Menunggu Perbaikan Berkas', done: false }
-                ]
-            },
-            '0135551234': {
-                noReg: 'PPDB27-MTsN2-0341',
-                nisn: '0135551234',
-                nama: 'Muhammad Rayhan Pratama',
-                sekolah: 'MI Muhammadiyah 3 Cepu',
-                jalur: 'Jalur Reguler',
+        let sheetApplicantsCount = null;
+        let sheetApplicantsList = [];
+
+        // -------------------------------------------------------------------
+        // 0. HELPER STATUS & SINKRONISASI SPREADSHEET REAL-TIME
+        // -------------------------------------------------------------------
+        function buildStatusPresentation(siswa) {
+            const rawStatus = String(siswa.status || 'MENUNGGU VERIFIKASI').toUpperCase().trim();
+            const namaSiswa = siswa.nama_siswa || siswa.nama || '-';
+            const jalurSiswa = siswa.jalur || 'Jalur Reguler';
+            const catatanPanitia = String(siswa.catatan || '').trim();
+            const waktuStr = siswa.waktu
+                ? new Date(siswa.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
+                : 'Tercatat di sistem';
+
+            if (rawStatus === 'TERVERIFIKASI') {
+                return {
+                    status: 'TERVERIFIKASI',
+                    badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+                    headerBg: 'bg-emerald-700',
+                    catatan: catatanPanitia || `Seluruh berkas persyaratan (${jalurSiswa}) atas nama ${namaSiswa} telah dinyatakan LENGKAP dan VALID oleh panitia. Silakan hadir pada Tes Performa Minat dan Bakat tanggal 9 Maret 2027 pukul 08.00 WIB dengan membawa Kartu Bukti Pendaftaran.`,
+                    timeline: [
+                        { title: 'Formulir & Berkas Dikirim', time: waktuStr, done: true },
+                        { title: 'Verifikasi Berkas oleh Panitia', time: 'Berkas Dinyatakan Valid & Lengkap', done: true },
+                        { title: 'Tes Performa Minat dan Bakat', time: '9 Maret 2027, 08.00 WIB di Madrasah', done: false }
+                    ]
+                };
+            }
+
+            if (rawStatus === 'PERLU PERBAIKAN' || rawStatus === 'PERLU PERBAIKAN BERKAS') {
+                return {
+                    status: 'PERLU PERBAIKAN BERKAS',
+                    badgeClass: 'bg-amber-100 text-amber-800 border-amber-300',
+                    headerBg: 'bg-amber-600',
+                    catatan: catatanPanitia
+                        ? `CATATAN PANITIA: ${catatanPanitia}. Silakan segera konfirmasi atau bawa berkas perbaikan ke sekretariat panitia PPDB MTsN 2 Bojonegoro.`
+                        : 'CATATAN PANITIA: Terdapat dokumen unggahan yang perlu diperbaiki/dilengkapi. Silakan hubungi WhatsApp panitia PPDB MTsN 2 Bojonegoro untuk konfirmasi.',
+                    timeline: [
+                        { title: 'Formulir & Berkas Dikirim', time: waktuStr, done: true },
+                        { title: 'Pemeriksaan Berkas Panitia', time: 'Perlu Perbaikan Berkas', done: false },
+                        { title: 'Tes Performa Minat dan Bakat', time: 'Menunggu Perbaikan Berkas', done: false }
+                    ]
+                };
+            }
+
+            return {
                 status: 'MENUNGGU VERIFIKASI',
                 badgeClass: 'bg-blue-100 text-blue-800 border-blue-300',
                 headerBg: 'bg-blue-700',
-                catatan: 'Data pendaftaran Jalur Reguler dan dokumen persyaratan Anda telah masuk dalam antrean verifikasi panitia PPDB MTsN 2 Bojonegoro. Proses verifikasi membutuhkan waktu maksimal 1x24 jam kerja.',
+                catatan: catatanPanitia || `Data pendaftaran (${jalurSiswa}) atas nama ${namaSiswa} telah tercatat resmi pada database panitia MTsN 2 Bojonegoro dan sedang dalam antrean pemeriksaan berkas.`,
                 timeline: [
-                    { title: 'Formulir & Berkas Dikirim', time: 'Hari ini, 11:42 WIB', done: true },
-                    { title: 'Proses Verifikasi Berkas Panitia', time: 'Sedang dalam antrean pemeriksaan', done: false },
-                    { title: 'Tes Performa Minat dan Bakat', time: '24 Mei 2027, 08.00 WIB di Madrasah', done: false }
+                    { title: 'Formulir & Berkas Dikirim', time: waktuStr, done: true },
+                    { title: 'Proses Verifikasi Berkas Panitia', time: 'Sedang dalam pemeriksaan panitia', done: false },
+                    { title: 'Tes Performa Minat dan Bakat', time: '9 Maret 2027, 08.00 WIB di Madrasah', done: false }
                 ]
-            }
-        };
-
-        // -------------------------------------------------------------------
-        // 0. UPDATE PERSENTASE & JUMLAH PENDAFTAR ASLI DARI GOOGLE SPREADSHEET
-        // -------------------------------------------------------------------
-        let sheetApplicantsCount = null;
-        let sheetApplicantsList = [];
+            };
+        }
 
         function getTrackPrefix(jalurName) {
             const j = String(jalurName || '').toLowerCase();
@@ -1345,7 +1360,6 @@
             const prefix = getTrackPrefix(jalurName);
             let maxSeq = 0;
 
-            // Cek urutan tertinggi dari data Google Spreadsheet
             if (Array.isArray(sheetApplicantsList)) {
                 sheetApplicantsList.forEach(item => {
                     if (!item) return;
@@ -1361,7 +1375,6 @@
                 });
             }
 
-            // Cek juga dari localStorage jika belum sinkron
             try {
                 const savedList = JSON.parse(localStorage.getItem(STORAGE_SUBMITTED_KEY) || '{}');
                 Object.values(savedList).forEach(item => {
@@ -1400,7 +1413,6 @@
                 renderQuotaBar(sheetApplicantsCount);
                 return;
             }
-            // Fallback sementara dari localStorage (tanpa menghitung 3 data simulasi dummy)
             try {
                 const savedList = JSON.parse(localStorage.getItem(STORAGE_SUBMITTED_KEY) || '{}');
                 const localUnique = new Set(
@@ -1427,14 +1439,11 @@
                     sheetApplicantsCount = json.data.length;
                     renderQuotaBar(sheetApplicantsCount);
 
-                    // Sinkronkan juga data spreadsheet ke pencarian Cek Status agar pendaftar bisa langsung cek
                     json.data.forEach(siswa => {
                         if (!siswa || !siswa.nisn) return;
                         const nisnKey = String(siswa.nisn).trim();
                         const regKey = String(siswa.noReg || '').trim().toUpperCase();
-                        const waktuStr = siswa.waktu
-                            ? new Date(siswa.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
-                            : 'Tercatat di sistem';
+                        const pres = buildStatusPresentation(siswa);
 
                         const rec = {
                             noReg: siswa.noReg || '-',
@@ -1442,15 +1451,11 @@
                             nama: siswa.nama_siswa || '-',
                             sekolah: siswa.sekolah_asal || '-',
                             jalur: siswa.jalur || 'Jalur Reguler',
-                            status: siswa.status || 'MENUNGGU VERIFIKASI',
-                            badgeClass: 'bg-blue-100 text-blue-800 border-blue-300',
-                            headerBg: 'bg-blue-700',
-                            catatan: `Data pendaftaran (${siswa.jalur || 'PPDB'}) atas nama ${siswa.nama_siswa} telah tercatat resmi pada database panitia MTsN 2 Bojonegoro.`,
-                            timeline: [
-                                { title: 'Formulir & Berkas Dikirim', time: waktuStr, done: true },
-                                { title: 'Proses Verifikasi Berkas Panitia', time: siswa.status || 'Menunggu verifikasi panitia', done: siswa.status === 'TERVERIFIKASI' },
-                                { title: 'Tes Performa Minat dan Bakat', time: '9 Maret 2027, 08.00 WIB di Madrasah', done: false }
-                            ]
+                            status: pres.status,
+                            badgeClass: pres.badgeClass,
+                            headerBg: pres.headerBg,
+                            catatan: pres.catatan,
+                            timeline: pres.timeline
                         };
                         applicantsDatabase[nisnKey] = rec;
                         if (regKey) applicantsDatabase[regKey] = rec;
@@ -1459,13 +1464,13 @@
                     updateQuotaDisplay();
                 }
             } catch (err) {
-                console.warn('Gagal menyinkronkan kuota dari Spreadsheet:', err);
+                console.warn('Gagal menyinkronkan data dari Spreadsheet:', err);
                 updateQuotaDisplay();
             }
         }
 
         // -------------------------------------------------------------------
-        // 1. NOTIFIKASI TOAST (PENGGANTI ALERT)
+        // 1. NOTIFIKASI TOAST
         // -------------------------------------------------------------------
         function showToast(message, type = 'info') {
             const container = document.getElementById('toast-container');
@@ -1522,6 +1527,7 @@
             } else if (viewName === 'cek-status') {
                 const navBtn = document.getElementById('nav-cek-status');
                 if (navBtn) navBtn.classList.add('text-emerald-700', 'bg-emerald-50', 'font-semibold');
+                syncQuotaFromSpreadsheet();
             }
 
             document.querySelectorAll('.mob-nav-btn').forEach(btn => {
@@ -1570,12 +1576,8 @@
         function toggleAccordion(contentId) {
             const content = document.getElementById(contentId);
             const icon = document.getElementById(`icon-${contentId}`);
-            if (content) {
-                content.classList.toggle('hidden');
-            }
-            if (icon) {
-                icon.classList.toggle('rotate-180');
-            }
+            if (content) content.classList.toggle('hidden');
+            if (icon) icon.classList.toggle('rotate-180');
         }
 
         // -------------------------------------------------------------------
@@ -1648,9 +1650,7 @@
         }
 
         function nextStep(step) {
-            if (validateStep(step)) {
-                goToStep(step + 1);
-            }
+            if (validateStep(step)) goToStep(step + 1);
         }
 
         function prevStep(step) {
@@ -1708,7 +1708,7 @@
         }
 
         // -------------------------------------------------------------------
-        // 5. UNGGAH FILE & KONVERSI BASE64 (SIAP UNTUK GOOGLE DRIVE)
+        // 5. UNGGAH FILE & KONVERSI BASE64
         // -------------------------------------------------------------------
         function handleFileUpload(inputEl, docKey) {
             const file = inputEl.files && inputEl.files[0];
@@ -1882,8 +1882,7 @@
             const waktuDaftar = now.toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) + ', ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
             const tglFormatted = new Date(tglLahirRaw).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
 
-            const finalizeRegistration = (finalNoReg, fromServer = false) => {
-                // Isi data kartu bukti pendaftaran
+            const finalizeRegistration = (finalNoReg) => {
                 document.getElementById('bukti-no-reg').textContent = finalNoReg;
                 document.getElementById('bukti-jalur').textContent = jalur;
                 document.getElementById('bukti-nama').textContent = `${nama} (${jenisKelamin})`;
@@ -1894,7 +1893,6 @@
                 document.getElementById('bukti-ortu').textContent = `Ayah: ${namaAyah} / Ibu: ${namaIbu} (WA: ${noWa})`;
                 document.getElementById('bukti-waktu').textContent = waktuDaftar;
 
-                // Tampilkan Pas Foto 3x4 dari file yang diunggah siswa
                 const fotoImgEl = document.getElementById('bukti-pas-foto');
                 const fotoPlaceholderEl = document.getElementById('bukti-pas-foto-placeholder');
                 if (fotoImgEl && uploadedFiles.foto && uploadedFiles.foto.base64) {
@@ -1904,7 +1902,6 @@
                     if (fotoPlaceholderEl) fotoPlaceholderEl.classList.add('hidden');
                 }
 
-                // Isi nama siswa & tanggal cetak pada kolom tanda tangan
                 const ttdSiswaEl = document.getElementById('bukti-ttd-siswa');
                 if (ttdSiswaEl) ttdSiswaEl.textContent = nama;
 
@@ -1943,7 +1940,6 @@
                     localStorage.setItem(STORAGE_SUBMITTED_KEY, JSON.stringify(savedList));
                 } catch (e) {}
 
-                // Perbarui persentase dan jumlah pendaftar real-time di halaman Beranda
                 if (typeof sheetApplicantsCount === 'number') {
                     sheetApplicantsCount += 1;
                 } else {
@@ -1976,7 +1972,6 @@
             };
 
             if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes('TEMPEL_URL')) {
-                // 1. Sinkronkan dulu data terbaru dari Spreadsheet agar nomor urut per jalur selalu akurat
                 fetch(GOOGLE_SCRIPT_URL)
                     .then(res => res.json())
                     .then(json => {
@@ -1990,7 +1985,6 @@
                         const autoNoReg = generateNextTrackRegNumber(jalur);
                         payloadData.noReg = autoNoReg;
 
-                        // 2. Kirim data & berkas ke Google Apps Script (coba baca JSON balasan, fallback ke no-cors jika perlu)
                         fetch(GOOGLE_SCRIPT_URL, {
                             method: 'POST',
                             body: JSON.stringify(payloadData)
@@ -1998,22 +1992,21 @@
                         .then(res => res.json())
                         .then(result => {
                             const serverNoReg = (result && result.noReg) ? result.noReg : autoNoReg;
-                            finalizeRegistration(serverNoReg, true);
+                            finalizeRegistration(serverNoReg);
                         })
                         .catch(() => {
-                            // Jika browser memblokir pembacaan respons CORS saat POST, tetap pastikan terkirim via no-cors
                             fetch(GOOGLE_SCRIPT_URL, {
                                 method: 'POST',
                                 mode: 'no-cors',
                                 body: JSON.stringify(payloadData)
                             }).finally(() => {
-                                finalizeRegistration(autoNoReg, false);
+                                finalizeRegistration(autoNoReg);
                             });
                         });
                     });
             } else {
                 const autoNoReg = generateNextTrackRegNumber(jalur);
-                finalizeRegistration(autoNoReg, false);
+                finalizeRegistration(autoNoReg);
             }
         }
 
@@ -2028,10 +2021,10 @@
             chip.id = 'user-submitted-chip';
             chip.type = 'button';
             chip.onclick = () => simulateStatusLookup(record.nisn);
-            chip.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-300 text-purple-900 text-xs font-bold transition-colors';
+            chip.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 text-xs font-bold transition-colors';
             chip.innerHTML = `
-                <span class="w-2 h-2 rounded-full bg-purple-600 animate-ping"></span>
-                <span>${record.nisn} (Pendaftaran Baru Anda)</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+                <span>Cek Cepat NISN Anda: ${record.nisn}</span>
             `;
             container.prepend(chip);
         }
@@ -2068,10 +2061,13 @@
             renderStatusResult(query);
         }
 
-        function handleSearchStatus(event) {
+        async function handleSearchStatus(event) {
             event.preventDefault();
             const query = document.getElementById('search-nisn-input').value.trim();
             if (!query) return;
+
+            // Segarkan data terbaru dari Google Spreadsheet sebelum menampilkan hasil
+            await syncQuotaFromSpreadsheet();
             renderStatusResult(query);
         }
 
@@ -2163,6 +2159,147 @@
         }
 
         // -------------------------------------------------------------------
+        // 9. DASHBOARD ADMIN & VERIFIKASI BERKAS 1-KLIK
+        // -------------------------------------------------------------------
+        function bukaLoginAdmin() {
+            const pass = prompt('Masukkan Password Panitia PPDB:');
+            if (pass === null) return;
+            if (pass === PASSWORD_ADMIN) {
+                document.getElementById('adminDashboardModal').style.display = 'block';
+                loadAdminDataFromSheet();
+            } else {
+                showToast('Password salah! Akses ditolak.', 'error');
+            }
+        }
+
+        function tutupAdminDashboard() {
+            document.getElementById('adminDashboardModal').style.display = 'none';
+        }
+
+        async function loadAdminDataFromSheet() {
+            const tbody = document.getElementById('adminTableBody');
+            const totalCounter = document.getElementById('adminTotalPendaftar');
+            
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align:center; padding:24px; color:#065f46; font-weight:600;">
+                        ⏳ Sedang mengambil data pendaftar terbaru dari Google Spreadsheet...
+                    </td>
+                </tr>
+            `;
+
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const json = await response.json();
+
+                if (json.status !== 'success') {
+                    throw new Error(json.message || 'Gagal membaca data Spreadsheet');
+                }
+
+                const listPendaftar = json.data || [];
+                sheetApplicantsList = listPendaftar;
+                if (totalCounter) totalCounter.textContent = listPendaftar.length;
+                sheetApplicantsCount = listPendaftar.length;
+                renderQuotaBar(sheetApplicantsCount);
+
+                if (listPendaftar.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="7" style="text-align:center; padding:24px; color:#6b7280;">
+                                Belum ada data pendaftar yang masuk di Google Spreadsheet.
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                tbody.innerHTML = listPendaftar.map((siswa, index) => {
+                    const st = String(siswa.status || 'MENUNGGU VERIFIKASI').toUpperCase();
+                    const stColor = st === 'TERVERIFIKASI' ? '#059669' : (st.includes('PERBAIKAN') ? '#d97706' : '#2563eb');
+                    const tglStr = siswa.waktu ? new Date(siswa.waktu).toLocaleDateString('id-ID') : '-';
+
+                    return `
+                    <tr style="border-bottom:1px solid #e5e7eb; background:${index % 2 === 0 ? '#ffffff' : '#f9fafb'};">
+                        <td style="padding:10px; border:1px solid #e5e7eb;">${index + 1}</td>
+                        <td style="padding:10px; border:1px solid #e5e7eb;">
+                            <strong style="color:#065f46;">${siswa.noReg}</strong><br>
+                            <small style="color:#6b7280;">${tglStr}</small>
+                        </td>
+                        <td style="padding:10px; border:1px solid #e5e7eb;">
+                            <span style="background:#d1fae5; color:#065f46; padding:3px 8px; border-radius:4px; font-weight:600; font-size:12px;">${siswa.jalur}</span>
+                        </td>
+                        <td style="padding:10px; border:1px solid #e5e7eb;">
+                            <strong>${siswa.nama_siswa}</strong><br>
+                            <small style="color:#4b5563;">NISN: ${siswa.nisn}</small>
+                        </td>
+                        <td style="padding:10px; border:1px solid #e5e7eb;">
+                            ${siswa.sekolah_asal}<br>
+                            <small>WA: <a href="https://wa.me/${String(siswa.no_wa).replace(/^0/, '62')}" target="_blank" style="color:#059669; text-decoration:none; font-weight:600;">${siswa.no_wa}</a></small>
+                        </td>
+                        <td style="padding:10px; border:1px solid #e5e7eb; line-height:1.8;">
+                            ${siswa.urlFoto && siswa.urlFoto !== '-' ? `<a href="${siswa.urlFoto}" target="_blank" style="color:#2563eb;">🖼️ Foto</a> ` : ''}
+                            ${siswa.urlKK && siswa.urlKK !== '-' ? `| <a href="${siswa.urlKK}" target="_blank" style="color:#2563eb;">📄 KK</a> ` : ''}
+                            ${siswa.urlAkta && siswa.urlAkta !== '-' ? `| <a href="${siswa.urlAkta}" target="_blank" style="color:#2563eb;">📄 Akta</a> ` : ''}
+                            ${siswa.urlRapor && siswa.urlRapor !== '-' ? `| <a href="${siswa.urlRapor}" target="_blank" style="color:#2563eb;">📎 Pendukung</a>` : ''}
+                        </td>
+                        <td style="padding:10px; border:1px solid #e5e7eb;">
+                            <div style="margin-bottom:6px; font-weight:700; font-size:12px; color:${stColor};">
+                                ${st}
+                            </div>
+                            ${siswa.catatan ? `<div style="font-size:11px; color:#6b7280; margin-bottom:6px; max-width:200px;">Catatan: ${siswa.catatan}</div>` : ''}
+                            <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                                <button type="button" onclick="verifikasiBerkas('${siswa.noReg}', '${siswa.nisn}', 'TERVERIFIKASI')" style="padding:4px 8px; background:#059669; color:#fff; border:none; border-radius:4px; font-size:11px; font-weight:600; cursor:pointer;">✅ Valid</button>
+                                <button type="button" onclick="verifikasiBerkas('${siswa.noReg}', '${siswa.nisn}', 'PERLU PERBAIKAN')" style="padding:4px 8px; background:#d97706; color:#fff; border:none; border-radius:4px; font-size:11px; font-weight:600; cursor:pointer;">⚠️ Revisi</button>
+                            </div>
+                        </td>
+                    </tr>
+                `}).join('');
+
+            } catch (error) {
+                console.error('Error loadAdminDataFromSheet:', error);
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align:center; color:#dc2626; padding:24px;">
+                            ❌ Gagal memuat data: ${error.message}. Pastikan Code.gs sudah di-deploy sebagai Versi Baru.
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        async function verifikasiBerkas(noReg, nisn, statusBaru) {
+            let catatan = '';
+            if (statusBaru === 'PERLU PERBAIKAN') {
+                catatan = prompt('Masukkan catatan berkas yang perlu diperbaiki siswa (contoh: Scan KK buram / Surat Undangan belum berstempel):');
+                if (catatan === null) return;
+            } else {
+                if (!confirm(`Tandai berkas No. Reg ${noReg} sebagai TERVERIFIKASI?`)) return;
+            }
+
+            showToast('Menyimpan status verifikasi...', 'info');
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify({
+                        action: 'updateStatus',
+                        noReg: noReg,
+                        nisn: nisn,
+                        statusBaru: statusBaru,
+                        catatan: catatan
+                    })
+                });
+                showToast(`Status ${noReg} berhasil diubah menjadi ${statusBaru}`, 'success');
+                setTimeout(() => {
+                    loadAdminDataFromSheet();
+                    syncQuotaFromSpreadsheet();
+                }, 1200);
+            } catch (err) {
+                showToast('Gagal memperbarui status: ' + err.message, 'error');
+            }
+        }
+
+        // -------------------------------------------------------------------
         // INISIALISASI SAAT HALAMAN DIMUAT
         // -------------------------------------------------------------------
         window.addEventListener('DOMContentLoaded', () => {
@@ -2171,98 +2308,6 @@
             loadSubmittedRecordsFromStorage();
             syncQuotaFromSpreadsheet();
         });
-    // === LOGIKA LOGIN & DASHBOARD ADMIN SPREADSHEET ===
-const PASSWORD_ADMIN = 'mtsn2bojonegoro'; // Silakan ganti password admin sesuai keinginan
-
-function bukaLoginAdmin() {
-  const pass = prompt('Masukkan Password Panitia PPDB:');
-  if (pass === null) return; // Batal diklik
-  if (pass === PASSWORD_ADMIN) {
-    document.getElementById('adminDashboardModal').style.display = 'block';
-    loadAdminDataFromSheet();
-  } else {
-    alert('Password salah! Akses ditolak.');
-  }
-}
-
-function tutupAdminDashboard() {
-  document.getElementById('adminDashboardModal').style.display = 'none';
-}
-
-async function loadAdminDataFromSheet() {
-  const tbody = document.getElementById('adminTableBody');
-  const totalCounter = document.getElementById('adminTotalPendaftar');
-  
-  tbody.innerHTML = `
-    <tr>
-      <td colspan="6" style="text-align:center; padding:24px; color:#065f46; font-weight:600;">
-        ⏳ Sedang mengambil data pendaftar terbaru dari Google Spreadsheet...
-      </td>
-    </tr>
-  `;
-
-  try {
-    const response = await fetch(GOOGLE_SCRIPT_URL);
-    const json = await response.json();
-
-    if (json.status !== 'success') {
-      throw new Error(json.message || 'Gagal membaca data Spreadsheet');
-    }
-
-    const listPendaftar = json.data || [];
-    sheetApplicantsList = listPendaftar;
-    if (totalCounter) totalCounter.textContent = listPendaftar.length;
-    sheetApplicantsCount = listPendaftar.length;
-    renderQuotaBar(sheetApplicantsCount);
-
-    if (listPendaftar.length === 0) {
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="6" style="text-align:center; padding:24px; color:#6b7280;">
-            Belum ada data pendaftar yang masuk di Google Spreadsheet.
-          </td>
-        </tr>
-      `;
-      return;
-    }
-
-    tbody.innerHTML = listPendaftar.map((siswa, index) => `
-      <tr style="border-bottom:1px solid #e5e7eb; background:${index % 2 === 0 ? '#ffffff' : '#f9fafb'};">
-        <td style="padding:10px; border:1px solid #e5e7eb;">${index + 1}</td>
-        <td style="padding:10px; border:1px solid #e5e7eb;">
-          <strong style="color:#065f46;">${siswa.noReg}</strong><br>
-          <small style="color:#6b7280;">${new Date(siswa.waktu).toLocaleDateString('id-ID')}</small>
-        </td>
-        <td style="padding:10px; border:1px solid #e5e7eb;">
-          <span style="background:#d1fae5; color:#065f46; padding:3px 8px; border-radius:4px; font-weight:600; font-size:12px;">${siswa.jalur}</span>
-        </td>
-        <td style="padding:10px; border:1px solid #e5e7eb;">
-          <strong>${siswa.nama_siswa}</strong><br>
-          <small style="color:#4b5563;">NISN: ${siswa.nisn}</small>
-        </td>
-        <td style="padding:10px; border:1px solid #e5e7eb;">
-          ${siswa.sekolah_asal}<br>
-          <small>WA: <a href="https://wa.me/${String(siswa.no_wa).replace(/^0/, '62')}" target="_blank" style="color:#059669; text-decoration:none; font-weight:600;">${siswa.no_wa}</a></small>
-        </td>
-        <td style="padding:10px; border:1px solid #e5e7eb; line-height:1.8;">
-          ${siswa.urlFoto && siswa.urlFoto !== '-' ? `<a href="${siswa.urlFoto}" target="_blank" style="color:#2563eb;">🖼️ Foto</a> ` : ''}
-          ${siswa.urlKK && siswa.urlKK !== '-' ? `| <a href="${siswa.urlKK}" target="_blank" style="color:#2563eb;">📄 KK</a> ` : ''}
-          ${siswa.urlAkta && siswa.urlAkta !== '-' ? `| <a href="${siswa.urlAkta}" target="_blank" style="color:#2563eb;">📄 Akta</a> ` : ''}
-          ${siswa.urlRapor && siswa.urlRapor !== '-' ? `| <a href="${siswa.urlRapor}" target="_blank" style="color:#2563eb;">📎 Pendukung</a>` : ''}
-        </td>
-      </tr>
-    `).join('');
-
-  } catch (error) {
-    console.error('Error loadAdminDataFromSheet:', error);
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="6" style="text-align:center; color:#dc2626; padding:24px;">
-          ❌ Gagal memuat data: ${error.message}. Pastikan fungsi doGet sudah ditambahkan di Apps Script dan di-deploy sebagai Versi Baru.
-        </td>
-      </tr>
-    `;
-  }
-} </script>
+    </script>
 </body>
 </html>
