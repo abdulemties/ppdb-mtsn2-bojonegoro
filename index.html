@@ -201,8 +201,8 @@
                         <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl">
                             <div class="flex items-center justify-between border-b border-white/15 pb-4 mb-5">
                                 <div>
-                                    <p class="text-xs uppercase tracking-wider text-emerald-200 font-semibold">Penutupan Gelombang</p>
-                                    <h2 class="font-heading text-lg sm:text-xl font-bold text-white mt-0.5">Hitung Mundur Pendaftaran</h2>
+                                    <p class="text-xs uppercase tracking-wider text-emerald-200 font-semibold">Menuju Pelaksanaan Tes</p>
+                                    <h2 class="font-heading text-lg sm:text-xl font-bold text-white mt-0.5">Hitung Mundur 9 Maret 2027</h2>
                                 </div>
                                 <span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-200 text-xs font-semibold">
                                     Aktif
@@ -233,10 +233,10 @@
                             <div class="bg-emerald-950/50 rounded-2xl p-4 border border-emerald-800/70 space-y-3">
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="text-emerald-200 font-medium">Keterisian Kuota Rombel (240 Kursi)</span>
-                                    <span id="quota-percent" class="font-bold text-amber-400">1.3% (3 Pendaftar)</span>
+                                    <span id="quota-percent" class="font-bold text-amber-400">Memuat data...</span>
                                 </div>
                                 <div class="w-full h-2.5 bg-emerald-900 rounded-full overflow-hidden">
-                                    <div id="quota-bar" class="h-full bg-gradient-to-r from-amber-500 to-emerald-400 rounded-full transition-all duration-500" style="width: 1.25%"></div>
+                                    <div id="quota-bar" class="h-full bg-gradient-to-r from-amber-500 to-emerald-400 rounded-full transition-all duration-500" style="width: 0%"></div>
                                 </div>
                                 <div class="flex items-center justify-between text-[11px] text-emerald-200/80 pt-1">
                                     <span>• Tes Performa Minat & Bakat: 9 Maret 2027</span>
@@ -1296,18 +1296,12 @@
         };
 
         // -------------------------------------------------------------------
-        // 0. UPDATE PERSENTASE & JUMLAH PENDAFTAR REAL-TIME
+        // 0. UPDATE PERSENTASE & JUMLAH PENDAFTAR ASLI DARI GOOGLE SPREADSHEET
         // -------------------------------------------------------------------
-        function updateQuotaDisplay() {
-            // Hitung jumlah pendaftar unik berdasarkan NISN 10 digit
-            const uniqueNISN = new Set(
-                Object.values(applicantsDatabase)
-                    .filter(item => item && item.nisn)
-                    .map(item => item.nisn)
-            );
-            const totalPendaftar = uniqueNISN.size;
+        let sheetApplicantsCount = null;
+
+        function renderQuotaBar(totalPendaftar) {
             const rawPercent = (totalPendaftar / TOTAL_KUOTA) * 100;
-            // Tampilkan 1 desimal jika di bawah 10%, atau bulatkan jika >= 10%
             const displayPercent = rawPercent < 10 ? rawPercent.toFixed(1) : Math.round(rawPercent);
             const barWidth = Math.min(100, rawPercent);
 
@@ -1319,6 +1313,74 @@
             }
             if (quotaBarEl) {
                 quotaBarEl.style.width = `${barWidth}%`;
+            }
+        }
+
+        function updateQuotaDisplay() {
+            if (typeof sheetApplicantsCount === 'number') {
+                renderQuotaBar(sheetApplicantsCount);
+                return;
+            }
+            // Fallback sementara dari localStorage (tanpa menghitung 3 data simulasi dummy)
+            try {
+                const savedList = JSON.parse(localStorage.getItem(STORAGE_SUBMITTED_KEY) || '{}');
+                const localUnique = new Set(
+                    Object.values(savedList)
+                        .filter(item => item && item.nisn)
+                        .map(item => item.nisn)
+                );
+                renderQuotaBar(localUnique.size);
+            } catch (e) {
+                renderQuotaBar(0);
+            }
+        }
+
+        async function syncQuotaFromSpreadsheet() {
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('TEMPEL_URL')) {
+                updateQuotaDisplay();
+                return;
+            }
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const json = await response.json();
+                if (json && json.status === 'success' && Array.isArray(json.data)) {
+                    sheetApplicantsCount = json.data.length;
+                    renderQuotaBar(sheetApplicantsCount);
+
+                    // Sinkronkan juga data spreadsheet ke pencarian Cek Status agar pendaftar bisa langsung cek
+                    json.data.forEach(siswa => {
+                        if (!siswa || !siswa.nisn) return;
+                        const nisnKey = String(siswa.nisn).trim();
+                        const regKey = String(siswa.noReg || '').trim().toUpperCase();
+                        const waktuStr = siswa.waktu
+                            ? new Date(siswa.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
+                            : 'Tercatat di sistem';
+
+                        const rec = {
+                            noReg: siswa.noReg || '-',
+                            nisn: nisnKey,
+                            nama: siswa.nama_siswa || '-',
+                            sekolah: siswa.sekolah_asal || '-',
+                            jalur: siswa.jalur || 'Jalur Reguler',
+                            status: siswa.status || 'MENUNGGU VERIFIKASI',
+                            badgeClass: 'bg-blue-100 text-blue-800 border-blue-300',
+                            headerBg: 'bg-blue-700',
+                            catatan: `Data pendaftaran (${siswa.jalur || 'PPDB'}) atas nama ${siswa.nama_siswa} telah tercatat resmi pada database panitia MTsN 2 Bojonegoro.`,
+                            timeline: [
+                                { title: 'Formulir & Berkas Dikirim', time: waktuStr, done: true },
+                                { title: 'Proses Verifikasi Berkas Panitia', time: siswa.status || 'Menunggu verifikasi panitia', done: siswa.status === 'TERVERIFIKASI' },
+                                { title: 'Tes Performa Minat dan Bakat', time: '9 Maret 2027, 08.00 WIB di Madrasah', done: false }
+                            ]
+                        };
+                        applicantsDatabase[nisnKey] = rec;
+                        if (regKey) applicantsDatabase[regKey] = rec;
+                    });
+                } else {
+                    updateQuotaDisplay();
+                }
+            } catch (err) {
+                console.warn('Gagal menyinkronkan kuota dari Spreadsheet:', err);
+                updateQuotaDisplay();
             }
         }
 
@@ -1437,10 +1499,10 @@
         }
 
         // -------------------------------------------------------------------
-        // 3. REAL-TIME COUNTDOWN TIMER
+        // 3. REAL-TIME COUNTDOWN TIMER (TARGET: 9 MARET 2027 PUKUL 08:00 WIB)
         // -------------------------------------------------------------------
         function startCountdown() {
-            const targetTime = Date.now() + ((12 * 86400) + (9 * 3600) + (42 * 60) + 18) * 1000;
+            const targetTime = new Date('2027-03-09T08:00:00+07:00').getTime();
 
             function updateTimer() {
                 const diff = Math.max(0, targetTime - Date.now());
@@ -1783,6 +1845,9 @@
             } catch (e) {}
 
             // Perbarui persentase dan jumlah pendaftar real-time di halaman Beranda
+            if (typeof sheetApplicantsCount === 'number') {
+                sheetApplicantsCount += 1;
+            }
             updateQuotaDisplay();
             addSubmittedChipToStatusPage(applicantRecord);
 
@@ -1979,6 +2044,7 @@
             startCountdown();
             loadDraft();
             loadSubmittedRecordsFromStorage();
+            syncQuotaFromSpreadsheet();
         });
     // === LOGIKA LOGIN & DASHBOARD ADMIN SPREADSHEET ===
 const PASSWORD_ADMIN = 'mtsn2bojonegoro'; // Silakan ganti password admin sesuai keinginan
@@ -2020,6 +2086,8 @@ async function loadAdminDataFromSheet() {
 
     const listPendaftar = json.data || [];
     if (totalCounter) totalCounter.textContent = listPendaftar.length;
+    sheetApplicantsCount = listPendaftar.length;
+    renderQuotaBar(sheetApplicantsCount);
 
     if (listPendaftar.length === 0) {
       tbody.innerHTML = `
