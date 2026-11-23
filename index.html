@@ -100,15 +100,15 @@
             margin-top: 2px;
         }
 
-        /* Print Stylesheet Rapi untuk 1 Lembar A4 */
+        /* Print Stylesheet Presisi 1 Lembar A4 */
 @media print {
     @page {
         size: A4 portrait;
-        margin: 8mm 10mm;
+        margin: 10mm;
     }
     html, body {
-        width: 210mm;
-        height: 297mm;
+        width: 100% !important;
+        height: auto !important;
         margin: 0 !important;
         padding: 0 !important;
         background-color: #FFFFFF !important;
@@ -122,43 +122,43 @@
         visibility: visible;
     }
     #printable-card {
-        position: fixed;
+        position: absolute;
         left: 0;
         top: 0;
-        width: 100%;
-        max-width: 190mm;
-        margin: 0 auto !important;
+        right: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
         box-shadow: none !important;
         border: 1.5px solid #065f46 !important;
         border-radius: 6px !important;
         page-break-inside: avoid;
         break-inside: avoid;
     }
-    /* Padatkan jarak vertikal agar muat penuh 1 halaman A4 */
     #printable-card .kop-surat-bukti {
-        padding-bottom: 8px !important;
-        margin-bottom: 10px !important;
+        padding-bottom: 10px !important;
+        margin-bottom: 12px !important;
     }
     #printable-card > div:first-child {
-        padding-top: 14px !important;
-        padding-bottom: 4px !important;
+        padding: 18px 22px 6px 22px !important;
     }
     #printable-card > div:nth-child(2) {
-        padding: 8px 20px 14px 20px !important;
+        padding: 10px 22px 20px 22px !important;
     }
     #printable-card .mb-6 {
-        margin-bottom: 10px !important;
+        margin-bottom: 14px !important;
     }
     #printable-card .mb-5 {
-        margin-bottom: 10px !important;
+        margin-bottom: 14px !important;
     }
     #printable-card .p-3 {
-        padding: 6px 10px !important;
-        font-size: 11.5px !important;
+        padding: 8px 12px !important;
+        font-size: 12px !important;
     }
     #printable-card .h-16,
     #printable-card .sm\:h-20 {
-        height: 48px !important;
+        height: 56px !important;
     }
     .no-print {
         display: none !important;
