@@ -70,6 +70,36 @@
             border: 1px solid rgba(226, 232, 240, 0.9);
         }
 
+        /* Kop Surat Bukti Pendaftaran: Arial 14pt, 12pt, 11pt, 9pt */
+        .kop-surat-bukti {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1f2937;
+            border-bottom: 4px double #374151;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .kop-surat-bukti .kop-baris-1 {
+            font-size: 14pt;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+        .kop-surat-bukti .kop-baris-2 {
+            font-size: 12pt;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+        .kop-surat-bukti .kop-baris-3 {
+            font-size: 11pt;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .kop-surat-bukti .kop-baris-4 {
+            font-size: 9pt;
+            font-weight: 400;
+            line-height: 1.35;
+            margin-top: 2px;
+        }
+
         /* Print Stylesheet Rapi untuk Bukti Pendaftaran */
         @media print {
             @page {
@@ -939,51 +969,33 @@
                 </div>
             </div>
 
-            <!-- KARTU BUKTI PENDAFTARAN SEMENTARA (KOP RESMI + PAS FOTO + TTD KETUA PANITIA) -->
+            <!-- KARTU BUKTI PENDAFTARAN SEMENTARA (KOP RESMI ARIAL 14/12/11/9 + PAS FOTO + TTD KETUA PANITIA) -->
             <div id="printable-card" class="bg-white rounded-3xl border-2 border-emerald-800 shadow-xl overflow-hidden">
                 
                 <!-- KOP SURAT RESMI KEMENTERIAN AGAMA RI -->
-                <div class="bg-white text-slate-900 px-6 pt-6 pb-4">
-                    <div class="flex items-center justify-between gap-4">
-                        <!-- Logo Kementerian Agama -->
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center shrink-0">
-                            <img src="logo-kemenag.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Logo Kemenag" class="w-full h-full object-contain">
-                            <div style="display:none;" class="w-16 h-16 rounded-2xl bg-emerald-800 text-amber-400 items-center justify-center shadow-sm font-bold text-xs">
-                                KEMENAG
-                            </div>
+                <div class="bg-white text-slate-900 px-6 pt-6 pb-2">
+                    <div class="kop-surat-bukti flex items-center justify-between gap-4">
+                        <!-- Logo Kementerian Agama Berwarna di Kiri -->
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shrink-0">
+                            <img src="logo-kemenag.png" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Kementerian_Agama_new_logo.png/240px-Kementerian_Agama_new_logo.png';" alt="Logo Kementerian Agama" class="w-full h-full object-contain">
                         </div>
 
-                        <!-- Teks Kop Surat Resmi -->
-                        <div class="text-center flex-1 leading-snug">
-                            <p class="font-heading text-xs sm:text-sm font-bold uppercase tracking-wide text-slate-800">
-                                Kementerian Agama Republik Indonesia
-                            </p>
-                            <p class="font-heading text-xs sm:text-sm font-bold uppercase tracking-wide text-slate-800">
-                                Kantor Kementerian Agama Kabupaten Bojonegoro
-                            </p>
-                            <h3 class="font-heading text-lg sm:text-2xl font-extrabold uppercase tracking-tight text-emerald-900 mt-0.5">
-                                MADRASAH TSANAWIYAH NEGERI 2 BOJONEGORO
-                            </h3>
-                            <p class="text-[11px] sm:text-xs text-slate-600 mt-0.5">
-                                Jl. Dr. Sutomo No. 58, Kec. Padangan, Kab. Bojonegoro, Jawa Timur 62162
-                            </p>
-                            <p class="text-[10px] sm:text-[11px] text-slate-500">
-                                Website: mtsn2bojonegoro.sch.id • Panitia PPDB Tahun Pelajaran 2027/2028
-                            </p>
+                        <!-- Teks Kop Surat Arial 14pt, 12pt, 11pt, 9pt -->
+                        <div class="flex-1 text-center">
+                            <div class="kop-baris-1 uppercase">KEMENTERIAN AGAMA REPUBLIK INDONESIA</div>
+                            <div class="kop-baris-2 uppercase">KANTOR KEMENTERIAN AGAMA KABUPATEN BOJONEGORO</div>
+                            <div class="kop-baris-3 uppercase">MADRASAH TSANAWIYAH NEGERI 2 BOJONEGORO</div>
+                            <div class="kop-baris-4">Jalan Dr. Sutomo 58 Padangan 62162 &phone; (0353) 551247 &bull; E-mail: mtsn_padangan@yahoo.co.id</div>
                         </div>
 
-                        <!-- Logo Madrasah Kanan -->
-                        <div class="hidden sm:flex w-16 h-16 sm:w-20 sm:h-20 rounded-xl items-center justify-center shrink-0">
-                            <img src="logo-mtsn2.png" onerror="this.parentElement.style.display='none';" alt="Logo MTsN 2 Bojonegoro" class="w-full h-full object-contain">
+                        <!-- Logo MTsN 2 Bojonegoro di Kanan -->
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shrink-0">
+                            <img src="logo-mtsn2.png" onerror="this.style.display='none';" alt="Logo MTsN 2 Bojonegoro" class="w-full h-full object-contain">
                         </div>
                     </div>
 
-                    <!-- Garis Ganda Khas Kop Surat Resmi -->
-                    <div class="mt-4 border-t-[3px] border-slate-900"></div>
-                    <div class="mt-[2px] border-t border-slate-900"></div>
-
                     <!-- Judul Kartu -->
-                    <div class="text-center mt-4">
+                    <div class="text-center mt-3 mb-2">
                         <h4 class="font-heading text-sm sm:text-base font-extrabold uppercase tracking-wider text-slate-900 underline underline-offset-4">
                             KARTU BUKTI PENDAFTARAN PESERTA DIDIK BARU (PPDB)
                         </h4>
@@ -1091,7 +1103,7 @@
                             <div class="h-16 sm:h-20 flex items-center justify-center sm:justify-start">
                                 <img src="ttd-ketua.png" onerror="this.style.display='none';" alt="Tanda Tangan Ketua Panitia" class="h-16 object-contain">
                             </div>
-                            <p id="nama-ketua-panitia" class="font-bold underline underline-offset-4 text-slate-900">Mohammad Supriyanto, S.Pd</p>
+                            <p id="nama-ketua-panitia" class="font-bold underline underline-offset-4 text-slate-900">Panitia PPDB MTsN 2 Bojonegoro</p>
                             <p id="nip-ketua-panitia" class="text-xs text-slate-600 mt-0.5">Sekretariat PPDB TP 2027/2028</p>
                         </div>
                     </div>
@@ -1249,7 +1261,7 @@
                             <th style="padding:12px 10px; border:1px solid #047857;">No. Reg & Tanggal</th>
                             <th style="padding:12px 10px; border:1px solid #047857;">Jalur</th>
                             <th style="padding:12px 10px; border:1px solid #047857;">Nama Siswa & NISN</th>
-                            <th style="padding:12px 10px; border:1px solid #047857;">Asal Sekolah & Nomor WA</th>
+                            <th style="padding:12px 10px; border:1px solid #047857;">Asal Sekolah & WA</th>
                             <th style="padding:12px 10px; border:1px solid #047857;">Berkas Google Drive</th>
                             <th style="padding:12px 10px; border:1px solid #047857;">Status & Verifikasi</th>
                         </tr>
@@ -1272,7 +1284,7 @@
         // ===================================================================
         // KONFIGURASI GOOGLE APPS SCRIPT & KUOTA MADRASAH
         // ===================================================================
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxn3_XyMoi9rEEOZEblAmNAkWfWd5-0tnrzvuQL8xl-33GiDNLoclMy50GmsFL1wiZd/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrEt5FpmIUNMIKqJasTaPFPDo6u2gZlI7SAUcg_LWxjMc9C0T6nnqxgyhvP6i9aGRo/exec';
         const TOTAL_KUOTA = 240;
 
         lucide.createIcons();
@@ -1291,14 +1303,29 @@
         const STORAGE_DRAFT_KEY = 'ppdb_mtsn2_bjn_2027_draft';
         const STORAGE_SUBMITTED_KEY = 'ppdb_mtsn2_bjn_2027_submitted';
 
-        // Cache lokal & hasil pencarian publik (bukan seluruh database publik)
+        // Cache lokal & hasil pencarian publik
         const applicantsDatabase = {};
         let totalQuotaCount = 0;
         let adminApplicantCache = [];
 
         // -------------------------------------------------------------------
-        // 0. HELPER STATUS & SINKRONISASI KUOTA PUBLIK
+        // 0. HELPER STATUS, KONVERSI FOTO DRIVE, & SINKRONISASI KUOTA PUBLIK
         // -------------------------------------------------------------------
+        function toDriveImageUrl(url) {
+            const raw = String(url || '').trim();
+            if (!raw || raw === '-') return '';
+            if (raw.startsWith('data:image/')) return raw;
+
+            const matchSlash = raw.match(/\/d\/([a-zA-Z0-9_-]+)/);
+            const matchId = raw.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+            const fileId = (matchSlash && matchSlash[1]) || (matchId && matchId[1]);
+
+            if (fileId) {
+                return `https://drive.google.com/thumbnail?id=${fileId}&sz=w400`;
+            }
+            return raw;
+        }
+
         function buildStatusPresentation(siswa) {
             const rawStatus = String(siswa.status || 'MENUNGGU VERIFIKASI').toUpperCase().trim();
             const namaSiswa = siswa.nama_siswa || siswa.nama || '-';
@@ -1398,6 +1425,9 @@
                             nama: siswa.nama_siswa || '-',
                             sekolah: siswa.sekolah_asal || '-',
                             jalur: siswa.jalur || 'Jalur Reguler',
+                            waktuDaftar: siswa.waktu
+                                ? new Date(siswa.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
+                                : '-',
                             status: pres.status,
                             badgeClass: pres.badgeClass,
                             headerBg: pres.headerBg,
@@ -1836,6 +1866,9 @@
             const now = new Date();
             const waktuDaftar = now.toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) + ', ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
             const tglFormatted = new Date(tglLahirRaw).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
+            const fotoDataUrl = (uploadedFiles.foto && uploadedFiles.foto.base64)
+                ? `data:${uploadedFiles.foto.mimeType || 'image/jpeg'};base64,${uploadedFiles.foto.base64}`
+                : '';
 
             const finalizeRegistration = (finalNoReg) => {
                 document.getElementById('bukti-no-reg').textContent = finalNoReg;
@@ -1850,9 +1883,8 @@
 
                 const fotoImgEl = document.getElementById('bukti-pas-foto');
                 const fotoPlaceholderEl = document.getElementById('bukti-pas-foto-placeholder');
-                if (fotoImgEl && uploadedFiles.foto && uploadedFiles.foto.base64) {
-                    const mime = uploadedFiles.foto.mimeType || 'image/jpeg';
-                    fotoImgEl.src = `data:${mime};base64,${uploadedFiles.foto.base64}`;
+                if (fotoImgEl && fotoDataUrl) {
+                    fotoImgEl.src = fotoDataUrl;
                     fotoImgEl.classList.remove('hidden');
                     if (fotoPlaceholderEl) fotoPlaceholderEl.classList.add('hidden');
                 }
@@ -1876,6 +1908,7 @@
                     sekolah: `${sekolahAsal} (${statusSekolah})`,
                     ortu: `Ayah: ${namaAyah} / Ibu: ${namaIbu} (WA: ${noWa})`,
                     jalur: jalur,
+                    fotoDataUrl: fotoDataUrl,
                     waktuDaftar: waktuDaftar,
                     status: 'MENUNGGU VERIFIKASI',
                     badgeClass: 'bg-blue-100 text-blue-800 border-blue-300',
@@ -2108,19 +2141,27 @@
         }
 
         function cetakUlangBukti(nisnTarget) {
-            const cleanNisn = String(nisnTarget || '').trim();
-            const siswaAdmin = adminApplicantCache.find(s => String(s.nisn || '').trim() === cleanNisn);
-            const siswaLocal = applicantsDatabase[cleanNisn];
+            const cleanQuery = String(nisnTarget || '').trim();
+            const upperQuery = cleanQuery.toUpperCase();
+
+            const siswaAdmin = adminApplicantCache.find(s =>
+                String(s.nisn || '').trim() === cleanQuery ||
+                String(s.noReg || '').trim().toUpperCase() === upperQuery
+            );
+            const siswaLocal = applicantsDatabase[cleanQuery] || applicantsDatabase[upperQuery];
 
             if (!siswaAdmin && !siswaLocal) {
                 showToast('Data lengkap pendaftar tidak ditemukan.', 'error');
                 return;
             }
 
+            const resolvedNisn = (siswaAdmin && siswaAdmin.nisn) || (siswaLocal && siswaLocal.nisn) || cleanQuery;
+            const resolvedReg = (siswaAdmin && siswaAdmin.noReg) || (siswaLocal && siswaLocal.noReg) || upperQuery;
+
             let savedDetail = null;
             try {
                 const savedList = JSON.parse(localStorage.getItem(STORAGE_SUBMITTED_KEY) || '{}');
-                savedDetail = savedList[cleanNisn] || null;
+                savedDetail = savedList[resolvedNisn] || savedList[resolvedReg.toUpperCase()] || null;
             } catch (e) {}
 
             const s = siswaAdmin || {};
@@ -2128,8 +2169,9 @@
             const jalur = s.jalur || (siswaLocal && siswaLocal.jalur) || (savedDetail && savedDetail.jalur) || 'Jalur Reguler';
             const nama = s.nama_siswa || (siswaLocal && siswaLocal.nama) || (savedDetail && savedDetail.nama) || '-';
             const jk = s.jenis_kelamin ? ` (${s.jenis_kelamin})` : '';
-            const nisn = s.nisn || (siswaLocal && siswaLocal.nisn) || cleanNisn;
+            const nisn = s.nisn || (siswaLocal && siswaLocal.nisn) || resolvedNisn;
             const nik = s.nik || (savedDetail && savedDetail.nik) || '-';
+
             const tempatLahir = s.tempat_lahir || '';
             const tglLahirRaw = s.tanggal_lahir || '';
             const tglFormatted = tglLahirRaw
@@ -2138,14 +2180,15 @@
             const ttlText = (tempatLahir || tglFormatted)
                 ? `${tempatLahir || '-'}${tglFormatted ? `, ${tglFormatted}` : ''}`
                 : ((savedDetail && savedDetail.ttl) || '-');
+
             const alamat = s.alamat_lengkap || (savedDetail && savedDetail.alamat) || '-';
             const sekolah = s.sekolah_asal || (siswaLocal && siswaLocal.sekolah) || (savedDetail && savedDetail.sekolah) || '-';
             const ortuInfo = (s.nama_ayah || s.nama_ibu)
                 ? `Ayah: ${s.nama_ayah || '-'} / Ibu: ${s.nama_ibu || '-'} (WA: ${s.no_wa || '-'})`
-                : ((savedDetail && savedDetail.ortu) || 'Tercatat di database panitia');
+                : ((savedDetail && savedDetail.ortu) || '-');
             const waktuDaftar = s.waktu
                 ? new Date(s.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) + ', ' + new Date(s.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
-                : ((savedDetail && savedDetail.waktuDaftar) || '-');
+                : ((savedDetail && savedDetail.waktuDaftar) || (siswaLocal && siswaLocal.waktuDaftar) || '-');
 
             document.getElementById('bukti-no-reg').textContent = noReg;
             document.getElementById('bukti-jalur').textContent = jalur;
@@ -2159,11 +2202,32 @@
 
             const fotoImgEl = document.getElementById('bukti-pas-foto');
             const fotoPlaceholderEl = document.getElementById('bukti-pas-foto-placeholder');
-            if (fotoImgEl && uploadedFiles.foto && uploadedFiles.foto.base64) {
-                const mime = uploadedFiles.foto.mimeType || 'image/jpeg';
-                fotoImgEl.src = `data:${mime};base64,${uploadedFiles.foto.base64}`;
-                fotoImgEl.classList.remove('hidden');
-                if (fotoPlaceholderEl) fotoPlaceholderEl.classList.add('hidden');
+            const driveFotoUrl = toDriveImageUrl(s.urlFoto);
+            const localFotoUrl = (savedDetail && savedDetail.fotoDataUrl) ||
+                (siswaLocal && siswaLocal.fotoDataUrl) ||
+                ((uploadedFiles.foto && uploadedFiles.foto.base64)
+                    ? `data:${uploadedFiles.foto.mimeType || 'image/jpeg'};base64,${uploadedFiles.foto.base64}`
+                    : '');
+            const finalFotoSrc = driveFotoUrl || localFotoUrl;
+
+            if (fotoImgEl) {
+                if (finalFotoSrc) {
+                    fotoImgEl.onerror = function() {
+                        if (localFotoUrl && fotoImgEl.src !== localFotoUrl) {
+                            fotoImgEl.src = localFotoUrl;
+                        } else {
+                            fotoImgEl.classList.add('hidden');
+                            if (fotoPlaceholderEl) fotoPlaceholderEl.classList.remove('hidden');
+                        }
+                    };
+                    fotoImgEl.src = finalFotoSrc;
+                    fotoImgEl.classList.remove('hidden');
+                    if (fotoPlaceholderEl) fotoPlaceholderEl.classList.add('hidden');
+                } else {
+                    fotoImgEl.src = '';
+                    fotoImgEl.classList.add('hidden');
+                    if (fotoPlaceholderEl) fotoPlaceholderEl.classList.remove('hidden');
+                }
             }
 
             const ttdSiswaEl = document.getElementById('bukti-ttd-siswa');
