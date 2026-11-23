@@ -145,14 +145,11 @@
                     </button>
                 </nav>
 
-                <!-- Tombol CTA Amber & Login Admin -->
+                <!-- Tombol CTA Amber -->
                 <div class="flex items-center gap-2">
                     <button onclick="switchView('daftar')" class="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 active:scale-[0.98] text-white font-semibold text-xs sm:text-sm px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-xl shadow-md shadow-amber-600/25 transition-all">
                         <i data-lucide="file-edit" class="w-4 h-4"></i>
                         <span>Daftar Sekarang</span>
-                    </button>
-                    <button type="button" onclick="bukaLoginAdmin()" class="inline-flex items-center gap-1.5 bg-emerald-800 hover:bg-emerald-900 active:scale-[0.98] text-white font-semibold text-xs sm:text-sm px-3.5 py-2.5 rounded-xl shadow-md transition-all">
-                        <span>🔐 Admin</span>
                     </button>
                 </div>
             </div>
@@ -837,7 +834,7 @@
                             <label class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 hover:bg-emerald-50 text-xs font-semibold text-slate-700 shadow-sm">
                                 <i data-lucide="image-plus" class="w-4 h-4 text-emerald-700"></i>
                                 <span>Pilih File Foto</span>
-                                <input type="file" accept="image/*" class="hidden" onchange="handleFileUpload(this, 'foto')">
+                                <input type="file" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="handleFileUpload(this, 'foto')">
                             </label>
                             <div id="status-foto" class="mt-2.5 text-xs hidden"></div>
                         </div>
@@ -852,7 +849,7 @@
                             <label class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 hover:bg-emerald-50 text-xs font-semibold text-slate-700 shadow-sm">
                                 <i data-lucide="upload-cloud" class="w-4 h-4 text-emerald-700"></i>
                                 <span>Pilih File KK</span>
-                                <input type="file" accept="image/*,.pdf" class="hidden" onchange="handleFileUpload(this, 'kk')">
+                                <input type="file" accept="image/jpeg,image/png,image/webp,application/pdf" class="hidden" onchange="handleFileUpload(this, 'kk')">
                             </label>
                             <div id="status-kk" class="mt-2.5 text-xs hidden"></div>
                         </div>
@@ -867,7 +864,7 @@
                             <label class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 hover:bg-emerald-50 text-xs font-semibold text-slate-700 shadow-sm">
                                 <i data-lucide="upload-cloud" class="w-4 h-4 text-emerald-700"></i>
                                 <span>Pilih File Akta</span>
-                                <input type="file" accept="image/*,.pdf" class="hidden" onchange="handleFileUpload(this, 'akta')">
+                                <input type="file" accept="image/jpeg,image/png,image/webp,application/pdf" class="hidden" onchange="handleFileUpload(this, 'akta')">
                             </label>
                             <div id="status-akta" class="mt-2.5 text-xs hidden"></div>
                         </div>
@@ -882,18 +879,18 @@
                             <label class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-slate-300 hover:bg-emerald-50 text-xs font-semibold text-slate-700 shadow-sm">
                                 <i data-lucide="upload-cloud" class="w-4 h-4 text-emerald-700"></i>
                                 <span>Pilih File Pendukung</span>
-                                <input type="file" accept="image/*,.pdf" class="hidden" onchange="handleFileUpload(this, 'rapor')">
+                                <input type="file" accept="image/jpeg,image/png,image/webp,application/pdf" class="hidden" onchange="handleFileUpload(this, 'rapor')">
                             </label>
                             <div id="status-rapor" class="mt-2.5 text-xs hidden"></div>
                         </div>
                     </div>
 
-                    <!-- Checkbox Pernyataan Kebenaran Data -->
+                    <!-- Checkbox Pernyataan Kebenaran Data & Privasi -->
                     <div class="bg-amber-50/90 border border-amber-200 rounded-2xl p-4">
                         <label class="flex items-start gap-3 cursor-pointer">
                             <input type="checkbox" id="pernyataan" required class="mt-1 w-4 h-4 rounded text-emerald-700 focus:ring-emerald-600">
                             <span class="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                                Saya menyatakan dengan sesungguhnya bahwa seluruh data dan dokumen yang saya unggah pada portal <strong>PPDB Online MTsN 2 Bojonegoro</strong> ini adalah benar dan sesuai dokumen asli. Apabila ditemukan pemalsuan data, panitia berhak membatalkan kelulusan.
+                                Saya menyatakan dengan sesungguhnya bahwa seluruh data dan dokumen yang saya unggah pada portal <strong>PPDB Online MTsN 2 Bojonegoro</strong> ini adalah benar dan sesuai dokumen asli, serta menyetujui pemrosesannya untuk keperluan seleksi PPDB TP 2027/2028. Apabila ditemukan pemalsuan data, panitia berhak membatalkan kelulusan.
                             </span>
                         </label>
                     </div>
@@ -1140,7 +1137,7 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- FOOTER INFORMATIF                                                     -->
+    <!-- FOOTER INFORMATIF + AKSES PANITIA DI BAGIAN BAWAH                      -->
     <!-- ===================================================================== -->
     <footer class="bg-slate-900 text-slate-300 pt-14 pb-24 md:pb-14 border-t border-slate-800 no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1187,7 +1184,12 @@
 
             <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
                 <p>&copy; 2027 Panitia PPDB Online MTsN 2 Bojonegoro. Hak Cipta Dilindungi.</p>
-                <p>Portal Penerimaan Peserta Didik Baru TP 2027/2028</p>
+                <div class="flex items-center gap-4">
+                    <span>Portal Penerimaan Peserta Didik Baru TP 2027/2028</span>
+                    <button type="button" onclick="bukaLoginAdmin()" class="text-slate-600 hover:text-emerald-400 transition-colors underline underline-offset-4">
+                        Panitia
+                    </button>
+                </div>
             </div>
         </div>
     </footer>
@@ -1272,13 +1274,13 @@
         // ===================================================================
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrEt5FpmIUNMIKqJasTaPFPDo6u2gZlI7SAUcg_LWxjMc9C0T6nnqxgyhvP6i9aGRo/exec';
         const TOTAL_KUOTA = 240;
-        const PASSWORD_ADMIN = 'mtsn2bojonegoro';
 
         lucide.createIcons();
 
         // State Aplikasi
         let currentStep = 1;
         let lastRegisteredApplicant = null;
+        let sessionAdminKey = '';
         let uploadedFiles = {
             foto: null,
             kk: null,
@@ -1289,13 +1291,13 @@
         const STORAGE_DRAFT_KEY = 'ppdb_mtsn2_bjn_2027_draft';
         const STORAGE_SUBMITTED_KEY = 'ppdb_mtsn2_bjn_2027_submitted';
 
-        // Database Pendaftar Real-Time (Diisi langsung dari Google Spreadsheet)
+        // Cache lokal & hasil pencarian publik (bukan seluruh database publik)
         const applicantsDatabase = {};
-        let sheetApplicantsCount = null;
-        let sheetApplicantsList = [];
+        let totalQuotaCount = 0;
+        let adminApplicantCache = [];
 
         // -------------------------------------------------------------------
-        // 0. HELPER STATUS & SINKRONISASI SPREADSHEET REAL-TIME
+        // 0. HELPER STATUS & SINKRONISASI KUOTA PUBLIK
         // -------------------------------------------------------------------
         function buildStatusPresentation(siswa) {
             const rawStatus = String(siswa.status || 'MENUNGGU VERIFIKASI').toUpperCase().trim();
@@ -1349,51 +1351,9 @@
             };
         }
 
-        function getTrackPrefix(jalurName) {
-            const j = String(jalurName || '').toLowerCase();
-            if (j.includes('undangan')) return 'UND';
-            if (j.includes('prestasi')) return 'PRS';
-            return 'REG';
-        }
-
-        function generateNextTrackRegNumber(jalurName) {
-            const prefix = getTrackPrefix(jalurName);
-            let maxSeq = 0;
-
-            if (Array.isArray(sheetApplicantsList)) {
-                sheetApplicantsList.forEach(item => {
-                    if (!item) return;
-                    const itemJalur = String(item.jalur || '').toLowerCase();
-                    const itemReg = String(item.noReg || '').toUpperCase();
-                    if (itemReg.startsWith(`PPDB27-${prefix}-`)) {
-                        const parts = itemReg.split('-');
-                        const num = parseInt(parts[parts.length - 1], 10);
-                        if (!isNaN(num) && num > maxSeq) maxSeq = num;
-                    } else if (getTrackPrefix(itemJalur) === prefix) {
-                        maxSeq += 1;
-                    }
-                });
-            }
-
-            try {
-                const savedList = JSON.parse(localStorage.getItem(STORAGE_SUBMITTED_KEY) || '{}');
-                Object.values(savedList).forEach(item => {
-                    if (!item || !item.noReg) return;
-                    const regUpper = String(item.noReg).toUpperCase();
-                    if (regUpper.startsWith(`PPDB27-${prefix}-`)) {
-                        const parts = regUpper.split('-');
-                        const num = parseInt(parts[parts.length - 1], 10);
-                        if (!isNaN(num) && num > maxSeq) maxSeq = num;
-                    }
-                });
-            } catch (e) {}
-
-            const nextSeq = String(maxSeq + 1).padStart(4, '0');
-            return `PPDB27-${prefix}-${nextSeq}`;
-        }
-
         function renderQuotaBar(totalPendaftar) {
-            const rawPercent = (totalPendaftar / TOTAL_KUOTA) * 100;
+            const safeCount = Math.max(0, Number(totalPendaftar) || 0);
+            const rawPercent = (safeCount / TOTAL_KUOTA) * 100;
             const displayPercent = rawPercent < 10 ? rawPercent.toFixed(1) : Math.round(rawPercent);
             const barWidth = Math.min(100, rawPercent);
 
@@ -1401,47 +1361,34 @@
             const quotaBarEl = document.getElementById('quota-bar');
 
             if (quotaPercentEl) {
-                quotaPercentEl.textContent = `${displayPercent}% (${totalPendaftar} Pendaftar)`;
+                quotaPercentEl.textContent = `${displayPercent}% (${safeCount} Pendaftar)`;
             }
             if (quotaBarEl) {
                 quotaBarEl.style.width = `${barWidth}%`;
             }
         }
 
-        function updateQuotaDisplay() {
-            if (typeof sheetApplicantsCount === 'number') {
-                renderQuotaBar(sheetApplicantsCount);
-                return;
-            }
-            try {
-                const savedList = JSON.parse(localStorage.getItem(STORAGE_SUBMITTED_KEY) || '{}');
-                const localUnique = new Set(
-                    Object.values(savedList)
-                        .filter(item => item && item.nisn)
-                        .map(item => item.nisn)
-                );
-                renderQuotaBar(localUnique.size);
-            } catch (e) {
-                renderQuotaBar(0);
-            }
-        }
-
-        async function syncQuotaFromSpreadsheet() {
+        async function syncQuotaFromSpreadsheet(queryToLookup = '') {
             if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('TEMPEL_URL')) {
-                updateQuotaDisplay();
-                return;
+                renderQuotaBar(totalQuotaCount);
+                return null;
             }
             try {
-                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const url = queryToLookup
+                    ? `${GOOGLE_SCRIPT_URL}?action=publicLookup&q=${encodeURIComponent(queryToLookup)}`
+                    : `${GOOGLE_SCRIPT_URL}?action=publicLookup`;
+                const response = await fetch(url);
                 const json = await response.json();
-                if (json && json.status === 'success' && Array.isArray(json.data)) {
-                    sheetApplicantsList = json.data;
-                    sheetApplicantsCount = json.data.length;
-                    renderQuotaBar(sheetApplicantsCount);
 
-                    json.data.forEach(siswa => {
-                        if (!siswa || !siswa.nisn) return;
-                        const nisnKey = String(siswa.nisn).trim();
+                if (json && json.status === 'success') {
+                    if (typeof json.totalCount === 'number') {
+                        totalQuotaCount = json.totalCount;
+                        renderQuotaBar(totalQuotaCount);
+                    }
+
+                    if (Array.isArray(json.data) && json.data.length > 0) {
+                        const siswa = json.data[0];
+                        const nisnKey = String(siswa.nisn || '').trim();
                         const regKey = String(siswa.noReg || '').trim().toUpperCase();
                         const pres = buildStatusPresentation(siswa);
 
@@ -1457,16 +1404,17 @@
                             catatan: pres.catatan,
                             timeline: pres.timeline
                         };
-                        applicantsDatabase[nisnKey] = rec;
+
+                        if (nisnKey) applicantsDatabase[nisnKey] = rec;
                         if (regKey) applicantsDatabase[regKey] = rec;
-                    });
-                } else {
-                    updateQuotaDisplay();
+                        return rec;
+                    }
                 }
             } catch (err) {
-                console.warn('Gagal menyinkronkan data dari Spreadsheet:', err);
-                updateQuotaDisplay();
+                console.warn('Gagal menyinkronkan data publik:', err);
             }
+            renderQuotaBar(totalQuotaCount);
+            return null;
         }
 
         // -------------------------------------------------------------------
@@ -1708,11 +1656,18 @@
         }
 
         // -------------------------------------------------------------------
-        // 5. UNGGAH FILE & KONVERSI BASE64
+        // 5. UNGGAH FILE & VALIDASI MIME + UKURAN
         // -------------------------------------------------------------------
         function handleFileUpload(inputEl, docKey) {
             const file = inputEl.files && inputEl.files[0];
             if (!file) return;
+
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+            if (!allowedTypes.includes(file.type)) {
+                showToast('Format file tidak didukung. Gunakan JPG, PNG, WebP, atau PDF.', 'error');
+                inputEl.value = '';
+                return;
+            }
 
             const statusEl = document.getElementById(`status-${docKey}`);
             const boxEl = document.getElementById(`box-${docKey}`);
@@ -1914,9 +1869,14 @@
                 const applicantRecord = {
                     noReg: finalNoReg,
                     nisn: nisn,
+                    nik: nik,
                     nama: nama,
-                    sekolah: sekolahAsal,
+                    ttl: `${tempatLahir}, ${tglFormatted}`,
+                    alamat: alamatLengkap,
+                    sekolah: `${sekolahAsal} (${statusSekolah})`,
+                    ortu: `Ayah: ${namaAyah} / Ibu: ${namaIbu} (WA: ${noWa})`,
                     jalur: jalur,
+                    waktuDaftar: waktuDaftar,
                     status: 'MENUNGGU VERIFIKASI',
                     badgeClass: 'bg-blue-100 text-blue-800 border-blue-300',
                     headerBg: 'bg-blue-700',
@@ -1931,7 +1891,6 @@
                 lastRegisteredApplicant = applicantRecord;
                 applicantsDatabase[nisn] = applicantRecord;
                 applicantsDatabase[finalNoReg.toUpperCase()] = applicantRecord;
-                sheetApplicantsList.push({ noReg: finalNoReg, jalur: jalur, nisn: nisn, nama_siswa: nama });
 
                 try {
                     const savedList = JSON.parse(localStorage.getItem(STORAGE_SUBMITTED_KEY) || '{}');
@@ -1940,12 +1899,8 @@
                     localStorage.setItem(STORAGE_SUBMITTED_KEY, JSON.stringify(savedList));
                 } catch (e) {}
 
-                if (typeof sheetApplicantsCount === 'number') {
-                    sheetApplicantsCount += 1;
-                } else {
-                    sheetApplicantsCount = sheetApplicantsList.length;
-                }
-                updateQuotaDisplay();
+                totalQuotaCount += 1;
+                renderQuotaBar(totalQuotaCount);
                 addSubmittedChipToStatusPage(applicantRecord);
 
                 submitBtn.disabled = false;
@@ -1971,42 +1926,34 @@
                 files: uploadedFiles
             };
 
-            if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes('TEMPEL_URL')) {
-                fetch(GOOGLE_SCRIPT_URL)
-                    .then(res => res.json())
-                    .then(json => {
-                        if (json && json.status === 'success' && Array.isArray(json.data)) {
-                            sheetApplicantsList = json.data;
-                            sheetApplicantsCount = json.data.length;
-                        }
-                    })
-                    .catch(() => {})
-                    .finally(() => {
-                        const autoNoReg = generateNextTrackRegNumber(jalur);
-                        payloadData.noReg = autoNoReg;
+            const fallbackPrefix = jalur.toLowerCase().includes('undangan')
+                ? 'UND'
+                : (jalur.toLowerCase().includes('prestasi') ? 'PRS' : 'REG');
+            const fallbackReg = `PPDB27-${fallbackPrefix}-${String(totalQuotaCount + 1).padStart(4, '0')}`;
 
-                        fetch(GOOGLE_SCRIPT_URL, {
-                            method: 'POST',
-                            body: JSON.stringify(payloadData)
-                        })
-                        .then(res => res.json())
-                        .then(result => {
-                            const serverNoReg = (result && result.noReg) ? result.noReg : autoNoReg;
-                            finalizeRegistration(serverNoReg);
-                        })
-                        .catch(() => {
-                            fetch(GOOGLE_SCRIPT_URL, {
-                                method: 'POST',
-                                mode: 'no-cors',
-                                body: JSON.stringify(payloadData)
-                            }).finally(() => {
-                                finalizeRegistration(autoNoReg);
-                            });
-                        });
+            if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes('TEMPEL_URL')) {
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payloadData)
+                })
+                .then(res => res.json())
+                .then(result => {
+                    const serverNoReg = (result && result.status === 'success' && result.noReg)
+                        ? result.noReg
+                        : fallbackReg;
+                    finalizeRegistration(serverNoReg);
+                })
+                .catch(() => {
+                    fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: JSON.stringify(payloadData)
+                    }).finally(() => {
+                        finalizeRegistration(fallbackReg);
                     });
+                });
             } else {
-                const autoNoReg = generateNextTrackRegNumber(jalur);
-                finalizeRegistration(autoNoReg);
+                finalizeRegistration(fallbackReg);
             }
         }
 
@@ -2037,7 +1984,7 @@
         }
 
         // -------------------------------------------------------------------
-        // 8. CEK STATUS PENDAFTARAN REAL-TIME
+        // 8. CEK STATUS PENDAFTARAN REAL-TIME & CETAK ULANG BUKTI
         // -------------------------------------------------------------------
         function loadSubmittedRecordsFromStorage() {
             try {
@@ -2052,7 +1999,7 @@
                     addSubmittedChipToStatusPage(lastRegisteredApplicant);
                 }
             } catch (e) {}
-            updateQuotaDisplay();
+            renderQuotaBar(totalQuotaCount);
         }
 
         function simulateStatusLookup(query) {
@@ -2066,8 +2013,7 @@
             const query = document.getElementById('search-nisn-input').value.trim();
             if (!query) return;
 
-            // Segarkan data terbaru dari Google Spreadsheet sebelum menampilkan hasil
-            await syncQuotaFromSpreadsheet();
+            await syncQuotaFromSpreadsheet(query);
             renderStatusResult(query);
         }
 
@@ -2080,21 +2026,16 @@
 
             if (!record) {
                 resultCard.innerHTML = `
-                    <div>
-                        <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Riwayat Progres Pendaftaran</h4>
-                        <div class="pt-1">
-                            ${timelineHTML}
+                    <div class="p-6 sm:p-8 text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="file-x-2" class="w-7 h-7"></i>
                         </div>
+                        <h3 class="font-heading text-lg font-bold text-slate-900 mb-1">Data Pendaftaran Tidak Ditemukan</h3>
+                        <p class="text-sm text-slate-600 max-w-md mx-auto">
+                            Pencarian untuk <strong>"${rawQuery}"</strong> tidak cocok dengan data pendaftar manapun. Periksa kembali 10 digit NISN atau Nomor Registrasi Anda.
+                        </p>
                     </div>
-
-                    <div class="pt-4 border-t border-slate-100 flex justify-end">
-                        <button type="button" onclick="cetakUlangBukti('${record.nisn}')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl shadow-md transition-colors">
-                            <i data-lucide="printer" class="w-4 h-4"></i>
-                            <span>Cetak / Download Ulang Bukti Pendaftaran</span>
-                        </button>
-                    </div>
-                </div>
-            `;
+                `;
                 lucide.createIcons();
                 return;
             }
@@ -2152,52 +2093,78 @@
                             ${timelineHTML}
                         </div>
                     </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex justify-end">
+                        <button type="button" onclick="cetakUlangBukti('${record.nisn}')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl shadow-md transition-colors">
+                            <i data-lucide="printer" class="w-4 h-4"></i>
+                            <span>Cetak / Download Ulang Bukti Pendaftaran</span>
+                        </button>
+                    </div>
                 </div>
             `;
 
             lucide.createIcons();
             resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }function cetakUlangBukti(nisnTarget) {
-            // Cari data lengkap siswa dari daftar Spreadsheet atau database lokal
-            const siswaSheet = sheetApplicantsList.find(s => String(s.nisn).trim() === String(nisnTarget).trim());
-            const siswaLocal = applicantsDatabase[String(nisnTarget).trim()];
+        }
 
-            if (!siswaSheet && !siswaLocal) {
+        function cetakUlangBukti(nisnTarget) {
+            const cleanNisn = String(nisnTarget || '').trim();
+            const siswaAdmin = adminApplicantCache.find(s => String(s.nisn || '').trim() === cleanNisn);
+            const siswaLocal = applicantsDatabase[cleanNisn];
+
+            if (!siswaAdmin && !siswaLocal) {
                 showToast('Data lengkap pendaftar tidak ditemukan.', 'error');
                 return;
             }
 
-            const s = siswaSheet || {};
-            const noReg = s.noReg || siswaLocal.noReg || '-';
-            const jalur = s.jalur || siswaLocal.jalur || 'Jalur Reguler';
-            const nama = s.nama_siswa || siswaLocal.nama || '-';
+            let savedDetail = null;
+            try {
+                const savedList = JSON.parse(localStorage.getItem(STORAGE_SUBMITTED_KEY) || '{}');
+                savedDetail = savedList[cleanNisn] || null;
+            } catch (e) {}
+
+            const s = siswaAdmin || {};
+            const noReg = s.noReg || (siswaLocal && siswaLocal.noReg) || (savedDetail && savedDetail.noReg) || '-';
+            const jalur = s.jalur || (siswaLocal && siswaLocal.jalur) || (savedDetail && savedDetail.jalur) || 'Jalur Reguler';
+            const nama = s.nama_siswa || (siswaLocal && siswaLocal.nama) || (savedDetail && savedDetail.nama) || '-';
             const jk = s.jenis_kelamin ? ` (${s.jenis_kelamin})` : '';
-            const nisn = s.nisn || siswaLocal.nisn || '-';
-            const nik = s.nik || '-';
-            const tempatLahir = s.tempat_lahir || '-';
+            const nisn = s.nisn || (siswaLocal && siswaLocal.nisn) || cleanNisn;
+            const nik = s.nik || (savedDetail && savedDetail.nik) || '-';
+            const tempatLahir = s.tempat_lahir || '';
             const tglLahirRaw = s.tanggal_lahir || '';
             const tglFormatted = tglLahirRaw
                 ? new Date(tglLahirRaw).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
-                : '-';
-            const alamat = s.alamat_lengkap || '-';
-            const sekolah = s.sekolah_asal || siswaLocal.sekolah || '-';
+                : '';
+            const ttlText = (tempatLahir || tglFormatted)
+                ? `${tempatLahir || '-'}${tglFormatted ? `, ${tglFormatted}` : ''}`
+                : ((savedDetail && savedDetail.ttl) || '-');
+            const alamat = s.alamat_lengkap || (savedDetail && savedDetail.alamat) || '-';
+            const sekolah = s.sekolah_asal || (siswaLocal && siswaLocal.sekolah) || (savedDetail && savedDetail.sekolah) || '-';
             const ortuInfo = (s.nama_ayah || s.nama_ibu)
                 ? `Ayah: ${s.nama_ayah || '-'} / Ibu: ${s.nama_ibu || '-'} (WA: ${s.no_wa || '-'})`
-                : 'Tercatat di database panitia';
+                : ((savedDetail && savedDetail.ortu) || 'Tercatat di database panitia');
             const waktuDaftar = s.waktu
                 ? new Date(s.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) + ', ' + new Date(s.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
-                : '-';
+                : ((savedDetail && savedDetail.waktuDaftar) || '-');
 
-            // Isi ulang semua kolom pada Kartu Bukti Pendaftaran (#view-bukti)
             document.getElementById('bukti-no-reg').textContent = noReg;
             document.getElementById('bukti-jalur').textContent = jalur;
             document.getElementById('bukti-nama').textContent = `${nama}${jk}`;
             document.getElementById('bukti-nisn').textContent = `${nisn} / ${nik}`;
-            document.getElementById('bukti-ttl').textContent = `${tempatLahir}, ${tglFormatted}`;
+            document.getElementById('bukti-ttl').textContent = ttlText;
             document.getElementById('bukti-alamat').textContent = alamat;
             document.getElementById('bukti-sekolah').textContent = sekolah;
             document.getElementById('bukti-ortu').textContent = ortuInfo;
             document.getElementById('bukti-waktu').textContent = waktuDaftar;
+
+            const fotoImgEl = document.getElementById('bukti-pas-foto');
+            const fotoPlaceholderEl = document.getElementById('bukti-pas-foto-placeholder');
+            if (fotoImgEl && uploadedFiles.foto && uploadedFiles.foto.base64) {
+                const mime = uploadedFiles.foto.mimeType || 'image/jpeg';
+                fotoImgEl.src = `data:${mime};base64,${uploadedFiles.foto.base64}`;
+                fotoImgEl.classList.remove('hidden');
+                if (fotoPlaceholderEl) fotoPlaceholderEl.classList.add('hidden');
+            }
 
             const ttdSiswaEl = document.getElementById('bukti-ttd-siswa');
             if (ttdSiswaEl) ttdSiswaEl.textContent = nama;
@@ -2208,54 +2175,75 @@
                 ttdTanggalEl.textContent = `Bojonegoro, ${tglCetak}`;
             }
 
-            // Buka halaman Kartu Bukti Pendaftaran
             switchView('bukti');
             showToast('Kartu Bukti Pendaftaran berhasil dimuat ulang. Klik "Cetak Bukti Pendaftaran" untuk menyimpan PDF.', 'success');
         }
 
         // -------------------------------------------------------------------
-        // 9. DASHBOARD ADMIN & VERIFIKASI BERKAS 1-KLIK
+        // 9. DASHBOARD ADMIN & VERIFIKASI BERKAS 1-KLIK (TEROTORISASI SERVER)
         // -------------------------------------------------------------------
         function bukaLoginAdmin() {
             const pass = prompt('Masukkan Password Panitia PPDB:');
             if (pass === null) return;
-            if (pass === PASSWORD_ADMIN) {
-                document.getElementById('adminDashboardModal').style.display = 'block';
-                loadAdminDataFromSheet();
-            } else {
-                showToast('Password salah! Akses ditolak.', 'error');
+            const cleanPass = String(pass).trim();
+            if (!cleanPass) {
+                showToast('Password tidak boleh kosong.', 'warning');
+                return;
             }
+            sessionAdminKey = cleanPass;
+            document.getElementById('adminDashboardModal').style.display = 'block';
+            loadAdminDataFromSheet();
         }
 
         function tutupAdminDashboard() {
+            sessionAdminKey = '';
+            adminApplicantCache = [];
+            document.getElementById('adminTableBody').innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align:center; padding:24px; color:#6b7280;">Sesi panitia ditutup.</td>
+                </tr>
+            `;
             document.getElementById('adminDashboardModal').style.display = 'none';
         }
 
         async function loadAdminDataFromSheet() {
             const tbody = document.getElementById('adminTableBody');
             const totalCounter = document.getElementById('adminTotalPendaftar');
+
+            if (!sessionAdminKey) {
+                bukaLoginAdmin();
+                return;
+            }
             
             tbody.innerHTML = `
                 <tr>
                     <td colspan="7" style="text-align:center; padding:24px; color:#065f46; font-weight:600;">
-                        ⏳ Sedang mengambil data pendaftar terbaru dari Google Spreadsheet...
+                        ⏳ Sedang memverifikasi akses & mengambil data pendaftar...
                     </td>
                 </tr>
             `;
 
             try {
-                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const url = `${GOOGLE_SCRIPT_URL}?action=adminList&adminKey=${encodeURIComponent(sessionAdminKey)}`;
+                const response = await fetch(url);
                 const json = await response.json();
+
+                if (json.status === 'unauthorized') {
+                    sessionAdminKey = '';
+                    tutupAdminDashboard();
+                    showToast(json.message || 'Password admin salah! Akses ditolak.', 'error');
+                    return;
+                }
 
                 if (json.status !== 'success') {
                     throw new Error(json.message || 'Gagal membaca data Spreadsheet');
                 }
 
                 const listPendaftar = json.data || [];
-                sheetApplicantsList = listPendaftar;
+                adminApplicantCache = listPendaftar;
                 if (totalCounter) totalCounter.textContent = listPendaftar.length;
-                sheetApplicantsCount = listPendaftar.length;
-                renderQuotaBar(sheetApplicantsCount);
+                totalQuotaCount = listPendaftar.length;
+                renderQuotaBar(totalQuotaCount);
 
                 if (listPendaftar.length === 0) {
                     tbody.innerHTML = `
@@ -2289,13 +2277,13 @@
                         </td>
                         <td style="padding:10px; border:1px solid #e5e7eb;">
                             ${siswa.sekolah_asal}<br>
-                            <small>WA: <a href="https://wa.me/${String(siswa.no_wa).replace(/^0/, '62')}" target="_blank" style="color:#059669; text-decoration:none; font-weight:600;">${siswa.no_wa}</a></small>
+                            <small>WA: <a href="https://wa.me/${String(siswa.no_wa).replace(/^0/, '62')}" target="_blank" rel="noopener noreferrer" style="color:#059669; text-decoration:none; font-weight:600;">${siswa.no_wa}</a></small>
                         </td>
                         <td style="padding:10px; border:1px solid #e5e7eb; line-height:1.8;">
-                            ${siswa.urlFoto && siswa.urlFoto !== '-' ? `<a href="${siswa.urlFoto}" target="_blank" style="color:#2563eb;">🖼️ Foto</a> ` : ''}
-                            ${siswa.urlKK && siswa.urlKK !== '-' ? `| <a href="${siswa.urlKK}" target="_blank" style="color:#2563eb;">📄 KK</a> ` : ''}
-                            ${siswa.urlAkta && siswa.urlAkta !== '-' ? `| <a href="${siswa.urlAkta}" target="_blank" style="color:#2563eb;">📄 Akta</a> ` : ''}
-                            ${siswa.urlRapor && siswa.urlRapor !== '-' ? `| <a href="${siswa.urlRapor}" target="_blank" style="color:#2563eb;">📎 Pendukung</a>` : ''}
+                            ${siswa.urlFoto && siswa.urlFoto !== '-' ? `<a href="${siswa.urlFoto}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;">🖼️ Foto</a> ` : ''}
+                            ${siswa.urlKK && siswa.urlKK !== '-' ? `| <a href="${siswa.urlKK}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;">📄 KK</a> ` : ''}
+                            ${siswa.urlAkta && siswa.urlAkta !== '-' ? `| <a href="${siswa.urlAkta}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;">📄 Akta</a> ` : ''}
+                            ${siswa.urlRapor && siswa.urlRapor !== '-' ? `| <a href="${siswa.urlRapor}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;">📎 Pendukung</a>` : ''}
                         </td>
                         <td style="padding:10px; border:1px solid #e5e7eb;">
                             <div style="margin-bottom:6px; font-weight:700; font-size:12px; color:${stColor};">
@@ -2323,6 +2311,11 @@
         }
 
         async function verifikasiBerkas(noReg, nisn, statusBaru) {
+            if (!sessionAdminKey) {
+                bukaLoginAdmin();
+                return;
+            }
+
             let catatan = '';
             if (statusBaru === 'PERLU PERBAIKAN') {
                 catatan = prompt('Masukkan catatan berkas yang perlu diperbaiki siswa (contoh: Scan KK buram / Surat Undangan belum berstempel):');
@@ -2333,22 +2326,29 @@
 
             showToast('Menyimpan status verifikasi...', 'info');
             try {
-                await fetch(GOOGLE_SCRIPT_URL, {
+                const res = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
                     body: JSON.stringify({
                         action: 'updateStatus',
+                        adminKey: sessionAdminKey,
                         noReg: noReg,
                         nisn: nisn,
                         statusBaru: statusBaru,
                         catatan: catatan
                     })
                 });
+                const json = await res.json();
+                if (json.status === 'unauthorized') {
+                    sessionAdminKey = '';
+                    tutupAdminDashboard();
+                    showToast('Sesi admin tidak valid. Silakan login ulang.', 'error');
+                    return;
+                }
                 showToast(`Status ${noReg} berhasil diubah menjadi ${statusBaru}`, 'success');
                 setTimeout(() => {
                     loadAdminDataFromSheet();
                     syncQuotaFromSpreadsheet();
-                }, 1200);
+                }, 800);
             } catch (err) {
                 showToast('Gagal memperbarui status: ' + err.message, 'error');
             }
