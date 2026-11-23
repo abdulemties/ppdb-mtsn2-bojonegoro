@@ -1316,7 +1316,7 @@
         // ===================================================================
         // KONFIGURASI GOOGLE APPS SCRIPT & KUOTA MADRASAH
         // ===================================================================
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxn3_XyMoi9rEEOZEblAmNAkWfWd5-0tnrzvuQL8xl-33GiDNLoclMy50GmsFL1wiZd/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRKJYsy7GcpMCHWnXvHGHV0M7TpoW3eT-k4QgwYa0_SZrzcZruNhPjGPXnx2plTtc2/exec';
         const TOTAL_KUOTA = 240;
 
         lucide.createIcons();
@@ -1353,7 +1353,7 @@
             const fileId = (matchSlash && matchSlash[1]) || (matchId && matchId[1]);
 
             if (fileId) {
-                return `https://drive.google.com/thumbnail?id=${fileId}&sz=w400`;
+                return `https://lh3.googleusercontent.com/d/${fileId}=w400`;
             }
             return raw;
         }
@@ -1451,12 +1451,27 @@
                         const regKey = String(siswa.noReg || '').trim().toUpperCase();
                         const pres = buildStatusPresentation(siswa);
 
+                        const tglFormatted = siswa.tanggal_lahir
+                            ? new Date(siswa.tanggal_lahir).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
+                            : '';
+
                         const rec = {
                             noReg: siswa.noReg || '-',
                             nisn: nisnKey,
+                            nik: siswa.nik || '-',
                             nama: siswa.nama_siswa || '-',
+                            jenis_kelamin: siswa.jenis_kelamin || '',
+                            ttl: (siswa.tempat_lahir || tglFormatted)
+                                ? `${siswa.tempat_lahir || '-'}${tglFormatted ? `, ${tglFormatted}` : ''}`
+                                : '-',
+                            alamat: siswa.alamat_lengkap || '-',
                             sekolah: siswa.sekolah_asal || '-',
+                            ortu: (siswa.nama_ayah || siswa.nama_ibu)
+                                ? `Ayah: ${siswa.nama_ayah || '-'} / Ibu: ${siswa.nama_ibu || '-'} (WA: ${siswa.no_wa || '-'})`
+                                : '-',
                             jalur: siswa.jalur || 'Jalur Reguler',
+                            urlFoto: siswa.urlFoto || '',
+                            fotoDataUrl: siswa.fotoBase64 || toDriveImageUrl(siswa.urlFoto),
                             waktuDaftar: siswa.waktu
                                 ? new Date(siswa.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
                                 : '-',
@@ -1935,6 +1950,7 @@
                     nisn: nisn,
                     nik: nik,
                     nama: nama,
+                    jenis_kelamin: jenisKelamin,
                     ttl: `${tempatLahir}, ${tglFormatted}`,
                     alamat: alamatLengkap,
                     sekolah: `${sekolahAsal} (${statusSekolah})`,
@@ -2067,9 +2083,10 @@
             renderQuotaBar(totalQuotaCount);
         }
 
-        function simulateStatusLookup(query) {
+        async function simulateStatusLookup(query) {
             const input = document.getElementById('search-nisn-input');
             if (input) input.value = query;
+            await syncQuotaFromSpreadsheet(query);
             renderStatusResult(query);
         }
 
@@ -2172,15 +2189,22 @@
             resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        function cetakUlangBukti(nisnTarget) {
+        async function cetakUlangBukti(nisnTarget) {
             const cleanQuery = String(nisnTarget || '').trim();
             const upperQuery = cleanQuery.toUpperCase();
 
-            const siswaAdmin = adminApplicantCache.find(s =>
+            let siswaAdmin = adminApplicantCache.find(s =>
                 String(s.nisn || '').trim() === cleanQuery ||
                 String(s.noReg || '').trim().toUpperCase() === upperQuery
             );
-            const siswaLocal = applicantsDatabase[cleanQuery] || applicantsDatabase[upperQuery];
+            let siswaLocal = applicantsDatabase[cleanQuery] || applicantsDatabase[upperQuery];
+
+            // Jika belum ada foto Base64 di memori lokal, tarik data lengkap + foto dari server
+            if ((!siswaAdmin || !siswaAdmin.fotoBase64) && (!siswaLocal || !siswaLocal.fotoDataUrl || !siswaLocal.fotoDataUrl.startsWith('data:'))) {
+                showToast('Menyiapkan kartu & pas foto pendaftar...', 'info');
+                const fetchedRec = await syncQuotaFromSpreadsheet(cleanQuery);
+                if (fetchedRec) siswaLocal = fetchedRec;
+            }
 
             if (!siswaAdmin && !siswaLocal) {
                 showToast('Data lengkap pendaftar tidak ditemukan.', 'error');
@@ -2200,9 +2224,10 @@
             const noReg = s.noReg || (siswaLocal && siswaLocal.noReg) || (savedDetail && savedDetail.noReg) || '-';
             const jalur = s.jalur || (siswaLocal && siswaLocal.jalur) || (savedDetail && savedDetail.jalur) || 'Jalur Reguler';
             const nama = s.nama_siswa || (siswaLocal && siswaLocal.nama) || (savedDetail && savedDetail.nama) || '-';
-            const jk = s.jenis_kelamin ? ` (${s.jenis_kelamin})` : '';
+            const rawJk = s.jenis_kelamin || (siswaLocal && siswaLocal.jenis_kelamin) || (savedDetail && savedDetail.jenis_kelamin) || '';
+            const jk = rawJk ? ` (${rawJk})` : '';
             const nisn = s.nisn || (siswaLocal && siswaLocal.nisn) || resolvedNisn;
-            const nik = s.nik || (savedDetail && savedDetail.nik) || '-';
+            const nik = s.nik || (siswaLocal && siswaLocal.nik) || (savedDetail && savedDetail.nik) || '-';
 
             const tempatLahir = s.tempat_lahir || '';
             const tglLahirRaw = s.tanggal_lahir || '';
@@ -2211,13 +2236,13 @@
                 : '';
             const ttlText = (tempatLahir || tglFormatted)
                 ? `${tempatLahir || '-'}${tglFormatted ? `, ${tglFormatted}` : ''}`
-                : ((savedDetail && savedDetail.ttl) || '-');
+                : ((siswaLocal && siswaLocal.ttl) || (savedDetail && savedDetail.ttl) || '-');
 
-            const alamat = s.alamat_lengkap || (savedDetail && savedDetail.alamat) || '-';
+            const alamat = s.alamat_lengkap || (siswaLocal && siswaLocal.alamat) || (savedDetail && savedDetail.alamat) || '-';
             const sekolah = s.sekolah_asal || (siswaLocal && siswaLocal.sekolah) || (savedDetail && savedDetail.sekolah) || '-';
             const ortuInfo = (s.nama_ayah || s.nama_ibu)
                 ? `Ayah: ${s.nama_ayah || '-'} / Ibu: ${s.nama_ibu || '-'} (WA: ${s.no_wa || '-'})`
-                : ((savedDetail && savedDetail.ortu) || '-');
+                : ((siswaLocal && siswaLocal.ortu) || (savedDetail && savedDetail.ortu) || '-');
             const waktuDaftar = s.waktu
                 ? new Date(s.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) + ', ' + new Date(s.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
                 : ((savedDetail && savedDetail.waktuDaftar) || (siswaLocal && siswaLocal.waktuDaftar) || '-');
@@ -2236,24 +2261,33 @@
             const fotoPlaceholderEl = document.getElementById('bukti-pas-foto-placeholder');
 
             const serverFotoDataUrl = s.fotoBase64 || '';
-            const driveFotoUrl = toDriveImageUrl(s.urlFoto);
-            const localFotoUrl = (savedDetail && savedDetail.fotoDataUrl) ||
-                (siswaLocal && siswaLocal.fotoDataUrl) ||
+            const localFotoUrl = (siswaLocal && siswaLocal.fotoDataUrl) ||
+                (savedDetail && savedDetail.fotoDataUrl) ||
                 ((uploadedFiles.foto && uploadedFiles.foto.base64)
                     ? `data:${uploadedFiles.foto.mimeType || 'image/jpeg'};base64,${uploadedFiles.foto.base64}`
                     : '');
+            const driveFotoUrl = toDriveImageUrl(s.urlFoto || (siswaLocal && siswaLocal.urlFoto));
 
             const finalFotoSrc = serverFotoDataUrl || localFotoUrl || driveFotoUrl;
 
             if (fotoImgEl) {
                 if (finalFotoSrc) {
+                    fotoImgEl.onload = function() {
+                        fotoImgEl.classList.remove('hidden');
+                        if (fotoPlaceholderEl) fotoPlaceholderEl.classList.add('hidden');
+                    };
                     fotoImgEl.onerror = function() {
-                        fotoImgEl.classList.add('hidden');
-                        if (fotoPlaceholderEl) fotoPlaceholderEl.classList.remove('hidden');
+                        const rawDrive = s.urlFoto || (siswaLocal && siswaLocal.urlFoto) || '';
+                        const matchId = rawDrive.match(/\/d\/([a-zA-Z0-9_-]+)|[?&]id=([a-zA-Z0-9_-]+)/);
+                        const fid = matchId && (matchId[1] || matchId[2]);
+                        if (fid && !fotoImgEl.src.includes('drive.google.com/thumbnail')) {
+                            fotoImgEl.src = `https://drive.google.com/thumbnail?id=${fid}&sz=w400`;
+                        } else {
+                            fotoImgEl.classList.add('hidden');
+                            if (fotoPlaceholderEl) fotoPlaceholderEl.classList.remove('hidden');
+                        }
                     };
                     fotoImgEl.src = finalFotoSrc;
-                    fotoImgEl.classList.remove('hidden');
-                    if (fotoPlaceholderEl) fotoPlaceholderEl.classList.add('hidden');
                 } else {
                     fotoImgEl.src = '';
                     fotoImgEl.classList.add('hidden');
@@ -2270,7 +2304,6 @@
                 ttdTanggalEl.textContent = `Bojonegoro, ${tglCetak}`;
             }
 
-            // Tutup modal admin jika cetak dipanggil dari dashboard panitia
             const adminModal = document.getElementById('adminDashboardModal');
             if (adminModal) adminModal.style.display = 'none';
 
@@ -2317,7 +2350,7 @@
             tbody.innerHTML = `
                 <tr>
                     <td colspan="7" style="text-align:center; padding:24px; color:#065f46; font-weight:600;">
-                        ⏳ Sedang memverifikasi akses & mengambil data serta foto pendaftar...
+                        ⏳ Sedang memverifikasi akses & mengambil data pendaftar...
                     </td>
                 </tr>
             `;
