@@ -53,7 +53,7 @@
             color: #0F172A;
         }
         h1, h2, h3, h4, .font-heading {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', 'sans-serif';
         }
         
         /* Ornamen Geometris Islami Halus */
@@ -101,69 +101,69 @@
         }
 
         /* Print Stylesheet Presisi 1 Lembar A4 */
-@media print {
-    @page {
-        size: A4 portrait;
-        margin: 10mm;
-    }
-    html, body {
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background-color: #FFFFFF !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-    body * {
-        visibility: hidden;
-    }
-    #printable-card, #printable-card * {
-        visibility: visible;
-    }
-    #printable-card {
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        margin: 0 !important;
-        box-shadow: none !important;
-        border: 1.5px solid #065f46 !important;
-        border-radius: 6px !important;
-        page-break-inside: avoid;
-        break-inside: avoid;
-    }
-    #printable-card .kop-surat-bukti {
-        padding-bottom: 10px !important;
-        margin-bottom: 12px !important;
-    }
-    #printable-card > div:first-child {
-        padding: 18px 22px 6px 22px !important;
-    }
-    #printable-card > div:nth-child(2) {
-        padding: 10px 22px 20px 22px !important;
-    }
-    #printable-card .mb-6 {
-        margin-bottom: 14px !important;
-    }
-    #printable-card .mb-5 {
-        margin-bottom: 14px !important;
-    }
-    #printable-card .p-3 {
-        padding: 8px 12px !important;
-        font-size: 12px !important;
-    }
-    #printable-card .h-16,
-    #printable-card .sm\:h-20 {
-        height: 56px !important;
-    }
-    .no-print {
-        display: none !important;
-    }
-}
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 10mm;
+            }
+            html, body {
+                width: 100% !important;
+                height: auto !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background-color: #FFFFFF !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            body * {
+                visibility: hidden;
+            }
+            #printable-card, #printable-card * {
+                visibility: visible;
+            }
+            #printable-card {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                border: 1.5px solid #065f46 !important;
+                border-radius: 6px !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            #printable-card .kop-surat-bukti {
+                padding-bottom: 10px !important;
+                margin-bottom: 12px !important;
+            }
+            #printable-card > div:first-child {
+                padding: 18px 22px 6px 22px !important;
+            }
+            #printable-card > div:nth-child(2) {
+                padding: 10px 22px 20px 22px !important;
+            }
+            #printable-card .mb-6 {
+                margin-bottom: 14px !important;
+            }
+            #printable-card .mb-5 {
+                margin-bottom: 14px !important;
+            }
+            #printable-card .p-3 {
+                padding: 8px 12px !important;
+                font-size: 12px !important;
+            }
+            #printable-card .h-16,
+            #printable-card .sm\:h-20 {
+                height: 56px !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="pb-20 md:pb-0 antialiased selection:bg-emerald-700 selection:text-white">
@@ -882,7 +882,7 @@
                 <div id="form-step-4" class="form-step hidden space-y-6">
                     <div class="border-b border-slate-100 pb-4">
                         <h2 class="font-heading text-lg sm:text-xl font-bold text-slate-900">Step 4: Unggah Dokumen Persyaratan</h2>
-                        <p class="text-xs sm:text-sm text-slate-500 mt-1">Pilih file foto (JPG/PNG) atau PDF (maksimal <strong>5 MB</strong> per file). Dokumen akan otomatis tersimpan ke server panitia.</p>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">Pilih file foto (JPG/PNG) atau PDF (maksimal <strong>5 MB</strong> per file). Dokumen akan otomatis tersimpan ke folder pendaftar di server panitia.</p>
                     </div>
 
                     <div class="grid sm:grid-cols-2 gap-4">
@@ -986,8 +986,8 @@
                         <i data-lucide="check-circle-2" class="w-6 h-6 text-amber-300"></i>
                     </div>
                     <div>
-                        <h2 class="font-heading font-bold text-base sm:text-lg">Pendaftaran Berhasil Disimpan!</h2>
-                        <p class="text-xs text-emerald-100">Cetak atau simpan bukti pendaftaran sementara ini untuk verifikasi di madrasah.</p>
+                        <h2 class="font-heading font-bold text-base sm:text-lg">Kartu Bukti Pendaftaran Siap Dicetak!</h2>
+                        <p class="text-xs text-emerald-100">Gunakan kertas ukuran A4 portrait untuk mencetak kartu bukti pendaftaran ini.</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2.5 w-full sm:w-auto">
@@ -1135,8 +1135,8 @@
                             <div class="h-16 sm:h-20 flex items-center justify-center sm:justify-start">
                                 <img src="ttd-ketua.png" onerror="this.style.display='none';" alt="Tanda Tangan Ketua Panitia" class="h-16 object-contain">
                             </div>
-                            <p id="nama-ketua-panitia" class="font-bold underline underline-offset-4 text-slate-900">Mohammad Supriyanto, S.Pd</p>
-                            <p id="nip-ketua-panitia" class="text-xs text-slate-600 mt-1">NIP.19800411 202521 1 008</p>
+                            <p id="nama-ketua-panitia" class="font-bold underline underline-offset-4 text-slate-900">Panitia PPDB MTsN 2 Bojonegoro</p>
+                            <p id="nip-ketua-panitia" class="text-xs text-slate-600 mt-0.5">Sekretariat PPDB TP 2027/2028</p>
                         </div>
                     </div>
 
@@ -1263,10 +1263,10 @@
     </nav>
 
     <!-- ===================================================================== -->
-    <!-- PANEL DASHBOARD ADMIN PPDB + VERIFIKASI BERKAS                        -->
+    <!-- PANEL DASHBOARD ADMIN PPDB + VERIFIKASI & CETAK KARTU                 -->
     <!-- ===================================================================== -->
-    <div id="adminDashboardModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; overflow-y:auto; padding:20px;">
-        <div style="max-width:1180px; margin:20px auto; background:#fff; border-radius:12px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,0.3); font-family:sans-serif;">
+    <div id="adminDashboardModal" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; overflow-y:auto; padding:20px;">
+        <div style="max-width:1220px; margin:20px auto; background:#fff; border-radius:12px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,0.3); font-family:sans-serif;">
             
             <!-- Header Dashboard -->
             <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; border-bottom:2px solid #e5e7eb; padding-bottom:16px; margin-bottom:20px; gap:10px;">
@@ -1295,7 +1295,7 @@
                             <th style="padding:12px 10px; border:1px solid #047857;">Nama Siswa & NISN</th>
                             <th style="padding:12px 10px; border:1px solid #047857;">Asal Sekolah & WA</th>
                             <th style="padding:12px 10px; border:1px solid #047857;">Berkas Google Drive</th>
-                            <th style="padding:12px 10px; border:1px solid #047857;">Status & Verifikasi</th>
+                            <th style="padding:12px 10px; border:1px solid #047857;">Status, Verifikasi & Cetak</th>
                         </tr>
                     </thead>
                     <tbody id="adminTableBody">
@@ -1316,7 +1316,7 @@
         // ===================================================================
         // KONFIGURASI GOOGLE APPS SCRIPT & KUOTA MADRASAH
         // ===================================================================
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxn3_XyMoi9rEEOZEblAmNAkWfWd5-0tnrzvuQL8xl-33GiDNLoclMy50GmsFL1wiZd/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrEt5FpmIUNMIKqJasTaPFPDo6u2gZlI7SAUcg_LWxjMc9C0T6nnqxgyhvP6i9aGRo/exec';
         const TOTAL_KUOTA = 240;
 
         lucide.createIcons();
@@ -2160,7 +2160,7 @@
                     </div>
 
                     <div class="pt-4 border-t border-slate-100 flex justify-end">
-                        <button type="button" onclick="cetakUlangBukti('${record.nisn}')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl shadow-md transition-colors">
+                        <button type="button" onclick="cetakUlangBukti('${record.nisn || record.noReg}')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl shadow-md transition-colors">
                             <i data-lucide="printer" class="w-4 h-4"></i>
                             <span>Cetak / Download Ulang Bukti Pendaftaran</span>
                         </button>
@@ -2234,23 +2234,22 @@
 
             const fotoImgEl = document.getElementById('bukti-pas-foto');
             const fotoPlaceholderEl = document.getElementById('bukti-pas-foto-placeholder');
+
+            const serverFotoDataUrl = s.fotoBase64 || '';
             const driveFotoUrl = toDriveImageUrl(s.urlFoto);
             const localFotoUrl = (savedDetail && savedDetail.fotoDataUrl) ||
                 (siswaLocal && siswaLocal.fotoDataUrl) ||
                 ((uploadedFiles.foto && uploadedFiles.foto.base64)
                     ? `data:${uploadedFiles.foto.mimeType || 'image/jpeg'};base64,${uploadedFiles.foto.base64}`
                     : '');
-            const finalFotoSrc = driveFotoUrl || localFotoUrl;
+
+            const finalFotoSrc = serverFotoDataUrl || localFotoUrl || driveFotoUrl;
 
             if (fotoImgEl) {
                 if (finalFotoSrc) {
                     fotoImgEl.onerror = function() {
-                        if (localFotoUrl && fotoImgEl.src !== localFotoUrl) {
-                            fotoImgEl.src = localFotoUrl;
-                        } else {
-                            fotoImgEl.classList.add('hidden');
-                            if (fotoPlaceholderEl) fotoPlaceholderEl.classList.remove('hidden');
-                        }
+                        fotoImgEl.classList.add('hidden');
+                        if (fotoPlaceholderEl) fotoPlaceholderEl.classList.remove('hidden');
                     };
                     fotoImgEl.src = finalFotoSrc;
                     fotoImgEl.classList.remove('hidden');
@@ -2271,8 +2270,12 @@
                 ttdTanggalEl.textContent = `Bojonegoro, ${tglCetak}`;
             }
 
+            // Tutup modal admin jika cetak dipanggil dari dashboard panitia
+            const adminModal = document.getElementById('adminDashboardModal');
+            if (adminModal) adminModal.style.display = 'none';
+
             switchView('bukti');
-            showToast('Kartu Bukti Pendaftaran berhasil dimuat ulang. Klik "Cetak Bukti Pendaftaran" untuk menyimpan PDF.', 'success');
+            showToast('Kartu Bukti Pendaftaran siap dicetak. Klik "Cetak Bukti Pendaftaran".', 'success');
         }
 
         // -------------------------------------------------------------------
@@ -2314,7 +2317,7 @@
             tbody.innerHTML = `
                 <tr>
                     <td colspan="7" style="text-align:center; padding:24px; color:#065f46; font-weight:600;">
-                        ⏳ Sedang memverifikasi akses & mengambil data pendaftar...
+                        ⏳ Sedang memverifikasi akses & mengambil data serta foto pendaftar...
                     </td>
                 </tr>
             `;
@@ -2356,6 +2359,7 @@
                     const st = String(siswa.status || 'MENUNGGU VERIFIKASI').toUpperCase();
                     const stColor = st === 'TERVERIFIKASI' ? '#059669' : (st.includes('PERBAIKAN') ? '#d97706' : '#2563eb');
                     const tglStr = siswa.waktu ? new Date(siswa.waktu).toLocaleDateString('id-ID') : '-';
+                    const lookupKey = siswa.nisn || siswa.noReg;
 
                     return `
                     <tr style="border-bottom:1px solid #e5e7eb; background:${index % 2 === 0 ? '#ffffff' : '#f9fafb'};">
@@ -2389,6 +2393,7 @@
                             <div style="display:flex; gap:4px; flex-wrap:wrap;">
                                 <button type="button" onclick="verifikasiBerkas('${siswa.noReg}', '${siswa.nisn}', 'TERVERIFIKASI')" style="padding:4px 8px; background:#059669; color:#fff; border:none; border-radius:4px; font-size:11px; font-weight:600; cursor:pointer;">✅ Valid</button>
                                 <button type="button" onclick="verifikasiBerkas('${siswa.noReg}', '${siswa.nisn}', 'PERLU PERBAIKAN')" style="padding:4px 8px; background:#d97706; color:#fff; border:none; border-radius:4px; font-size:11px; font-weight:600; cursor:pointer;">⚠️ Revisi</button>
+                                <button type="button" onclick="cetakUlangBukti('${lookupKey}')" style="padding:4px 8px; background:#1d4ed8; color:#fff; border:none; border-radius:4px; font-size:11px; font-weight:600; cursor:pointer;">🖨️ Cetak Bukti</button>
                             </div>
                         </td>
                     </tr>
