@@ -2157,6 +2157,60 @@
 
             lucide.createIcons();
             resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }function cetakUlangBukti(nisnTarget) {
+            // Cari data lengkap siswa dari daftar Spreadsheet atau database lokal
+            const siswaSheet = sheetApplicantsList.find(s => String(s.nisn).trim() === String(nisnTarget).trim());
+            const siswaLocal = applicantsDatabase[String(nisnTarget).trim()];
+
+            if (!siswaSheet && !siswaLocal) {
+                showToast('Data lengkap pendaftar tidak ditemukan.', 'error');
+                return;
+            }
+
+            const s = siswaSheet || {};
+            const noReg = s.noReg || siswaLocal.noReg || '-';
+            const jalur = s.jalur || siswaLocal.jalur || 'Jalur Reguler';
+            const nama = s.nama_siswa || siswaLocal.nama || '-';
+            const jk = s.jenis_kelamin ? ` (${s.jenis_kelamin})` : '';
+            const nisn = s.nisn || siswaLocal.nisn || '-';
+            const nik = s.nik || '-';
+            const tempatLahir = s.tempat_lahir || '-';
+            const tglLahirRaw = s.tanggal_lahir || '';
+            const tglFormatted = tglLahirRaw
+                ? new Date(tglLahirRaw).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
+                : '-';
+            const alamat = s.alamat_lengkap || '-';
+            const sekolah = s.sekolah_asal || siswaLocal.sekolah || '-';
+            const ortuInfo = (s.nama_ayah || s.nama_ibu)
+                ? `Ayah: ${s.nama_ayah || '-'} / Ibu: ${s.nama_ibu || '-'} (WA: ${s.no_wa || '-'})`
+                : 'Tercatat di database panitia';
+            const waktuDaftar = s.waktu
+                ? new Date(s.waktu).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) + ', ' + new Date(s.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
+                : '-';
+
+            // Isi ulang semua kolom pada Kartu Bukti Pendaftaran (#view-bukti)
+            document.getElementById('bukti-no-reg').textContent = noReg;
+            document.getElementById('bukti-jalur').textContent = jalur;
+            document.getElementById('bukti-nama').textContent = `${nama}${jk}`;
+            document.getElementById('bukti-nisn').textContent = `${nisn} / ${nik}`;
+            document.getElementById('bukti-ttl').textContent = `${tempatLahir}, ${tglFormatted}`;
+            document.getElementById('bukti-alamat').textContent = alamat;
+            document.getElementById('bukti-sekolah').textContent = sekolah;
+            document.getElementById('bukti-ortu').textContent = ortuInfo;
+            document.getElementById('bukti-waktu').textContent = waktuDaftar;
+
+            const ttdSiswaEl = document.getElementById('bukti-ttd-siswa');
+            if (ttdSiswaEl) ttdSiswaEl.textContent = nama;
+
+            const ttdTanggalEl = document.getElementById('bukti-tanggal-ttd');
+            if (ttdTanggalEl) {
+                const tglCetak = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+                ttdTanggalEl.textContent = `Bojonegoro, ${tglCetak}`;
+            }
+
+            // Buka halaman Kartu Bukti Pendaftaran
+            switchView('bukti');
+            showToast('Kartu Bukti Pendaftaran berhasil dimuat ulang. Klik "Cetak Bukti Pendaftaran" untuk menyimpan PDF.', 'success');
         }
 
         // -------------------------------------------------------------------
