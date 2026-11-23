@@ -1292,25 +1292,9 @@
         const STORAGE_DRAFT_KEY = 'ppdb_mtsn2_bjn_2027_draft';
         const STORAGE_SUBMITTED_KEY = 'ppdb_mtsn2_bjn_2027_submitted';
 
-        // Database Pendaftar Awal (3 Data Simulasi + Otomatis bertambah saat ada pendaftaran baru)
-        const applicantsDatabase = {
-            '0134567890': {
-                noReg: 'PPDB27-MTsN2-0118',
-                nisn: '0134567890',
-                nama: 'Ahmad Fauzan Al-Ghifari',
-                sekolah: 'MIN 1 Bojonegoro',
-                jalur: 'Jalur Prestasi',
-                status: 'TERVERIFIKASI',
-                badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-300',
-                headerBg: 'bg-emerald-700',
-                catatan: 'Seluruh berkas persyaratan (Pas Foto, KK, Akta Kelahiran, dan Piagam Juara 1 KSM Kabupaten) telah dinyatakan LENGKAP dan VALID oleh panitia. Silakan hadir pada Tes Performa Minat dan Bakat pada 24 Mei 2027 pukul 08.00 WIB dengan membawa Kartu Bukti Pendaftaran.',
-                timeline: [
-                    { title: 'Formulir & Berkas Dikirim', time: '12 Mei 2027, 09:14 WIB', done: true },
-                    { title: 'Verifikasi Berkas oleh Panitia', time: '12 Mei 2027, 14:30 WIB (Valid)', done: true },
-                    { title: 'Tes Performa Minat dan Bakat', time: '24 Mei 2027, 08.00 WIB di Madrasah', done: true }
-                ]
-            },
-            '0139876543': {
+        // Database Pendaftar Real-Time (Diisi otomatis dari Google Spreadsheet)
+        const applicantsDatabase = {};
+        '0139876543': {
                 noReg: 'PPDB27-MTsN2-0294',
                 nisn: '0139876543',
                 nama: 'Siti Aisyah Rahmawati',
